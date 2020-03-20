@@ -46,16 +46,25 @@ namespace Organiser
             {
                 if (ValidateForm())
                 {
-                    //Construct connection details
-                    var hostPort = txtBoxHostPort.Text.Split(':');
                     var connectionDetails = new ConnectionDetails()
                     {
-                        Host = hostPort[0],
-                        Port = hostPort[1],
                         Username = txtBoxUsername.Text,
                         Password = txtBoxPassword.Text,
                         ExtraValue = txtBoxExtraValue.Text
                     };
+
+
+                    var hostDetails = !string.IsNullOrEmpty(txtBoxHostPort.Text) ? txtBoxHostPort.Text.Split(':') : new string[] { };
+                    if(hostDetails.Length > 0)
+                    {
+                        connectionDetails.Host = hostDetails[0];
+                        connectionDetails.Port = hostDetails[1];
+                    }
+                    else
+                    {
+                        connectionDetails.Host = string.Empty;
+                        connectionDetails.Port = string.Empty;
+                    }
 
                     //Construct new project object
                     var projectEntry = new ProjectEntry()
@@ -277,19 +286,27 @@ namespace Organiser
         /// </summary>
         private void RefreshOutput()
         {
-            //Clear filter
-            ddlFilter.SelectedIndex = -1;
-            txtBoxSearch.Text = string.Empty;
+            try
+            {
+                //Clear filter
+                ddlFilter.SelectedIndex = -1;
+                txtBoxSearch.Text = string.Empty;
 
-            //Clear output
-            listBoxOutput.DataSource = null;
-            listBoxOutput.Items.Clear();
+                //Clear output
+                listBoxOutput.DataSource = null;
+                listBoxOutput.Items.Clear();
 
-            //Then sort & reassign values
-            listBoxOutput.DataSource = _entries
-                .OrderBy(x => x.State)
-                .ToList();
-            listBoxOutput.Refresh();
+                //Then sort & reassign values
+                listBoxOutput.DataSource = _entries
+                    .OrderBy(x => x.State)
+                    .ToList();
+                listBoxOutput.Refresh();
+            }
+            catch(Exception ex)
+            {
+                DisplayDialog($"Error at {MethodBase.GetCurrentMethod().Name} : {ex.Message}", true);
+                Trace.WriteLine(ex);
+            }
         }
 
         /// <summary>

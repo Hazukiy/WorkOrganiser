@@ -100,22 +100,39 @@ namespace Organiser
         private void ToggleChange()
         {
             var hasChanges = false;
-            if (!lblChangesPending.Visible && !btnSave.Enabled)
+            var extraValues = _localInstance.Details.ExtraValue == null ? string.Empty : _localInstance.Details.ExtraValue;
+
+            if(txtBoxHost.Text != _localInstance.Details.Host)
             {
-                if (ddlEntryState.SelectedIndex != (int)_localInstance.State) hasChanges = true;
-                if (txtBoxComments.Text != _localInstance.Comments) hasChanges = true;
-                if (txtBoxHost.Text != _localInstance.Details.Host) hasChanges = true;
-                if (txtBoxPort.Text != _localInstance.Details.Port) hasChanges = true;
-                if (txtBoxUsername.Text != _localInstance.Details.Username) hasChanges = true;
-                if (txtBoxPassword.Text != _localInstance.Details.Password) hasChanges = true;
-                if (txtBoxExtraValues.Text != _localInstance.Details.ExtraValue) hasChanges = true;
+                hasChanges = true;
+            }
+            else if(txtBoxPort.Text != _localInstance.Details.Port)
+            {
+                hasChanges = true;
+            }
+            else if(txtBoxUsername.Text != _localInstance.Details.Username)
+            {
+                hasChanges = true;
+            }
+            else if(txtBoxPassword.Text != _localInstance.Details.Password)
+            {
+                hasChanges = true;
+            }
+            else if(txtBoxExtraValues.Text != extraValues)
+            {
+                hasChanges = true;
+            }
+            else if(txtBoxComments.Text != _localInstance.Comments)
+            {
+                hasChanges = true;
+            }
+            else if(ddlEntryState.SelectedIndex != (int)_localInstance.State)
+            {
+                hasChanges = true;
             }
 
-            if(hasChanges)
-            {
-                lblChangesPending.Visible = true;
-                btnSave.Enabled = true;
-            }
+            lblChangesPending.Visible = hasChanges;
+            btnSave.Enabled = hasChanges;
         }
     }
 }
