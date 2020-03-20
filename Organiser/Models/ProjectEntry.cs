@@ -11,6 +11,7 @@ namespace Organiser.Models
         public string Comments { get; set; }
         public DateTime DateCreated { get; set; }
         public ProjectState State { get; set; }
+        public ConnectionDetails Details { get; set; }
 
         public override string ToString()
         {

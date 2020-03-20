@@ -46,6 +46,17 @@ namespace Organiser
             {
                 if (ValidateForm())
                 {
+                    //Construct connection details
+                    var hostPort = txtBoxHostPort.Text.Split(':');
+                    var connectionDetails = new ConnectionDetails()
+                    {
+                        Host = hostPort[0],
+                        Port = hostPort[1],
+                        Username = txtBoxUsername.Text,
+                        Password = txtBoxPassword.Text,
+                        ExtraValue = txtBoxExtraValue.Text
+                    };
+
                     //Construct new project object
                     var projectEntry = new ProjectEntry()
                     {
@@ -53,14 +64,18 @@ namespace Organiser
                         URL = txtBoxLink.Text,
                         Comments = txtBoxComments.Text,
                         State = (ProjectState)ddlState.SelectedItem,
-                        DateCreated = DateTime.Now
+                        DateCreated = DateTime.Now,
+                        Details = connectionDetails
                     };
+
                     DataAccess.Instance.InsertNewRecord(projectEntry);
 
                     projectEntry.Id = listBoxOutput.Items.Count + 1;
                     _entries.Add(projectEntry);
 
                     CleanupForm();
+
+                    RefreshOutput();
                 }
             }
             catch (Exception ex)
@@ -245,6 +260,15 @@ namespace Organiser
                 return false;
             }
 
+            if(!string.IsNullOrEmpty(txtBoxHostPort.Text))
+            {
+                if (!txtBoxHostPort.Text.Contains(':'))
+                {
+                    DisplayDialog("Host/Port format: 1.1.1.1:80. Include : ");
+                    return false;
+                }
+            }
+
             return true;
         }
 
@@ -296,6 +320,10 @@ namespace Organiser
             txtBoxLink.Text = string.Empty;
             txtBoxComments.Text = string.Empty;
             txtBoxSearch.Text = string.Empty;
+            txtBoxHostPort.Text = string.Empty;
+            txtBoxUsername.Text = string.Empty;
+            txtBoxPassword.Text = string.Empty;
+            txtBoxExtraValue.Text = string.Empty;
             ddlState.SelectedIndex = 0;
         }
 

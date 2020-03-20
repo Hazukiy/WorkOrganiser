@@ -88,6 +88,7 @@
     <Compile Include="DetailsWindow.Designer.cs">
       <DependentUpon>DetailsWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\ConnectionDetails.cs" />
     <Compile Include="Models\Enums\ProjectState.cs" />
     <Compile Include="Models\ProjectEntry.cs" />
     <Compile Include="Program.cs" />

@@ -31,6 +31,13 @@ namespace Organiser
             lblCreationDate.Text = entry.DateCreated.ToString();
             lblState.Text = entry.State.ToString();
             txtBoxComments.Text = entry.Comments;
+
+            txtBoxHost.Text = entry.Details.Host;
+            txtBoxPort.Text = entry.Details.Port;
+            txtBoxUsername.Text = entry.Details.Username;
+            txtBoxPassword.Text = entry.Details.Password;
+            txtBoxExtra.Text = entry.Details.ExtraValue;
+
             _localInstance = entry;
         }
 
@@ -39,14 +46,14 @@ namespace Organiser
             try
             {
                 var result = MessageBox.Show("Are you sure you want to delete this record?", "Delete Record", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information);
-                if(result == DialogResult.Yes)
+                if (result == DialogResult.Yes)
                 {
                     DataAccess.Instance.DeleteRecord(_localInstance);
                     RecordDeleted?.Invoke(this, _localInstance);
                     this.Close();
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Trace.WriteLine(ex);
             }
@@ -55,10 +62,15 @@ namespace Organiser
         private void linkLabelADO_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             var target = e.Link.LinkData as string;
-            if(target != null)
+            if (target != null)
             {
                 Process.Start(target);
             }
+        }
+
+        private void lblState_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
