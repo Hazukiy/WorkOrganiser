@@ -81,6 +81,9 @@ namespace Organiser.Database
                 using (var db = new LiteDatabase(DatabaseConnection))
                 {
                     var col = db.GetCollection<ProjectEntry>(_collectionName);
+
+
+
                     col.Insert(entry);
 
                     Trace.WriteLine($"New entry: [{entry.Title}] added.");
@@ -88,7 +91,7 @@ namespace Organiser.Database
             }
             catch(Exception ex)
             {
-                Trace.WriteLine(ex);
+                ErrorHandler.ThrowError(ex);
             }
         }
 
@@ -113,7 +116,7 @@ namespace Organiser.Database
             }
             catch (Exception ex)
             {
-                Trace.WriteLine(ex);
+                ErrorHandler.ThrowError(ex);
             }
             return retVal;
         }
@@ -133,7 +136,7 @@ namespace Organiser.Database
             }
             catch(Exception ex)
             {
-                Trace.WriteLine(ex);
+                ErrorHandler.ThrowError(ex);
             }
         }
 
@@ -151,7 +154,7 @@ namespace Organiser.Database
             }
             catch(Exception ex)
             {
-                Trace.WriteLine(ex);
+                ErrorHandler.ThrowError(ex);
             }
         }
     }

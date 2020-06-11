@@ -76,6 +76,7 @@
     <Compile Include="EditWindow.Designer.cs">
       <DependentUpon>EditWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="ErrorHandler.cs" />
     <Compile Include="MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>

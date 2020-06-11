@@ -77,10 +77,11 @@ namespace Organiser
                         Details = connectionDetails
                     };
 
-                    DataAccess.Instance.InsertNewRecord(projectEntry);
+                    projectEntry.Id = listBoxOutput.Items.Count + 2; //Index from 0 & new record
 
-                    projectEntry.Id = listBoxOutput.Items.Count + 1;
                     _entries.Add(projectEntry);
+
+                    DataAccess.Instance.InsertNewRecord(projectEntry);
 
                     CleanupForm();
 
@@ -89,8 +90,7 @@ namespace Organiser
             }
             catch (Exception ex)
             {
-                DisplayDialog($"Error at {MethodBase.GetCurrentMethod().Name} : {ex.Message}", true);
-                Trace.WriteLine(ex);
+                ErrorHandler.ThrowError(ex);
             }
         }
         private void listBoxOutput_MouseDown(object sender, MouseEventArgs e)
@@ -119,8 +119,7 @@ namespace Organiser
             }
             catch(Exception ex)
             {
-                DisplayDialog($"Error at {MethodBase.GetCurrentMethod().Name} : {ex.Message}", true);
-                Trace.WriteLine(ex);
+                ErrorHandler.ThrowError(ex);
             }
         }
         private void Form_FormClosed(object sender, FormClosedEventArgs e)
@@ -149,8 +148,7 @@ namespace Organiser
             }
             catch(Exception ex)
             {
-                DisplayDialog($"Error at {MethodBase.GetCurrentMethod().Name} : {ex.Message}", true);
-                Trace.WriteLine(ex);
+                ErrorHandler.ThrowError(ex);
             }
         }
         private void Edit_FormClosed(object sender, FormClosedEventArgs e)
@@ -176,8 +174,7 @@ namespace Organiser
             }
             catch(Exception ex)
             {
-                DisplayDialog($"Error at {MethodBase.GetCurrentMethod().Name} : {ex.Message}", true);
-                Trace.WriteLine(ex);
+                ErrorHandler.ThrowError(ex);
             }
         }
         private void checkBoxColorCoding_CheckedChanged(object sender, EventArgs e)
@@ -304,8 +301,7 @@ namespace Organiser
             }
             catch(Exception ex)
             {
-                DisplayDialog($"Error at {MethodBase.GetCurrentMethod().Name} : {ex.Message}", true);
-                Trace.WriteLine(ex);
+                ErrorHandler.ThrowError(ex);
             }
         }
 
@@ -359,7 +355,7 @@ namespace Organiser
             }
             catch (Exception ex)
             {
-                Trace.WriteLine(ex);
+                ErrorHandler.ThrowError(ex);
             }
         }
         #endregion
@@ -376,12 +372,14 @@ namespace Organiser
                     {
                         MessageBox.Show($"Deleted entry [{entry.Title}]", "Deleted Record", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     }
+
+                    //Refresh
+                    RefreshOutput();
                 }
             }
             catch(Exception ex)
             {
-                DisplayDialog($"Error at {MethodBase.GetCurrentMethod().Name} : {ex.Message}", true);
-                Trace.WriteLine(ex);
+                ErrorHandler.ThrowError(ex);
             }
         }
 
@@ -397,8 +395,7 @@ namespace Organiser
             }
             catch(Exception ex)
             {
-                DisplayDialog($"Error at {MethodBase.GetCurrentMethod().Name} : {ex.Message}", true);
-                Trace.WriteLine(ex);
+                ErrorHandler.ThrowError(ex);
             }
         }
         #endregion
