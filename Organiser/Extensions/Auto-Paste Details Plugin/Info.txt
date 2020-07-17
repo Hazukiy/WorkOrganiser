@@ -1,0 +1,6 @@
+﻿Add the below script to the bottom of the page in the following directory: "Immix.Web\SetupManager\Sites\Controls\Devices\Devices.ascx"
+<script type="text/javascript" src="AutoConnectionDetails.js"></script>
+
+Supported Formats 
+- Serialised JSON i.e. {"Host":"","Port":"","Username":"","Password":""}
+

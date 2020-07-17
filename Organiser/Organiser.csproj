@@ -77,6 +77,8 @@
       <DependentUpon>EditWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="ErrorHandler.cs" />
+    <Compile Include="Extensions\Auto-Paste Details Plugin\SerialisedConnectionDetails.cs" />
+    <Compile Include="Extensions\Auto-Paste Details Plugin\SerialiseLogic.cs" />
     <Compile Include="MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -140,11 +142,17 @@
   <ItemGroup>
     <Content Include="assets\img\book-icon.ico" />
     <Content Include="assets\img\book-icon.png" />
+    <Content Include="Extensions\Auto-Paste Details Plugin\AutoConnectionDetails.js" />
+    <Content Include="Extensions\Auto-Paste Details Plugin\Info.txt" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="LiteDB">
       <Version>5.0.3</Version>
     </PackageReference>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>12.0.3</Version>
+    </PackageReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

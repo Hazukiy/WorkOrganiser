@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Organiser.Extensions.Auto_Paste_Details_Plugin;
 
 namespace Organiser
 {
@@ -133,6 +134,12 @@ namespace Organiser
 
             lblChangesPending.Visible = hasChanges;
             btnSave.Enabled = hasChanges;
+        }
+
+        private void btnCopyDetails_Click(object sender, EventArgs e)
+        {
+            var data = SerialiseLogic.Instance.ConvertToJSON(_localInstance.Details);
+            Clipboard.SetText(data);
         }
     }
 }
