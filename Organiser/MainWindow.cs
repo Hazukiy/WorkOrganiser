@@ -1,7 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Data;
-using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Reflection;
@@ -40,6 +39,18 @@ namespace Organiser
         }
 
         #region Control Events
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked)
+            {
+                listBoxOutput.DataSource = _entries.Where(x => x.State != ProjectState.Complete).ToList();
+            }
+            else
+            {
+                RefreshOutput();
+            }
+        }
+
         private void btn_InsertRecord_Click(object sender, EventArgs e)
         {
             try
