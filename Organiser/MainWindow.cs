@@ -30,7 +30,11 @@ namespace Organiser
             }
 
             //Set data sources
-            listBoxOutput.DataSource = _entries;
+            listBoxOutput.DataSource = _entries
+                .OrderByDescending(x => x.State == ProjectState.Active)
+                .OrderByDescending(x => x.State == ProjectState.Validation)
+                .ToList();
+
             ddlState.DataSource = Enum.GetValues(typeof(ProjectState));
             ddlFilter.DataSource = Enum.GetValues(typeof(ProjectState));
             ddlState.SelectedIndex = -1;
@@ -43,7 +47,11 @@ namespace Organiser
         {
             if (checkBox1.Checked)
             {
-                listBoxOutput.DataSource = _entries.Where(x => x.State != ProjectState.Complete).ToList();
+                listBoxOutput.DataSource = _entries
+                    .Where(x => x.State != ProjectState.Complete)
+                    .OrderByDescending(x => x.State == ProjectState.Active)
+                    .OrderByDescending(x => x.State == ProjectState.Validation)
+                    .ToList();
             }
             else
             {
@@ -306,7 +314,8 @@ namespace Organiser
 
                 //Then sort & reassign values
                 listBoxOutput.DataSource = _entries
-                    .OrderBy(x => x.State)
+                    .OrderByDescending(x => x.State == ProjectState.Active)
+                    .OrderByDescending(x => x.State == ProjectState.Validation)
                     .ToList();
                 listBoxOutput.Refresh();
             }
