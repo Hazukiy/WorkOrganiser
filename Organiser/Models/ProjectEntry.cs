@@ -15,7 +15,7 @@ namespace Organiser.Models
 
         public override string ToString()
         {
-            return $"{Id}. {Title} : {State}";
+            return $"{Id}. {Title}";
         }
     }
 }

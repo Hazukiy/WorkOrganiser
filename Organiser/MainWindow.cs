@@ -37,15 +37,23 @@ namespace Organiser
 
             ddlState.DataSource = Enum.GetValues(typeof(ProjectState));
             ddlFilter.DataSource = Enum.GetValues(typeof(ProjectState));
-            ddlState.SelectedIndex = -1;
+            ddlState.SelectedIndex = 0;
             ddlFilter.SelectedIndex = -1;
             checkBoxColorCoding.Checked = true;
+            checkBoxHideCompleted.Checked = true;
+
+            //Backup database
+            var result = DataAccess.Instance.ProcessDatabaseBackup();
+            if (result)
+            {
+                DisplayDialog($"Database has been backed up to: {DataAccess.Instance.BackupLocation}");
+            }
         }
 
         #region Control Events
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBox1.Checked)
+            if (checkBoxHideCompleted.Checked)
             {
                 listBoxOutput.DataSource = _entries
                     .Where(x => x.State != ProjectState.Complete)
@@ -214,7 +222,7 @@ namespace Organiser
                 switch (data.State)
                 {
                     case ProjectState.Active:
-                        itemColor = Brushes.GreenYellow;
+                        itemColor = Brushes.LimeGreen;
                         break;
                     case ProjectState.Blocked:
                         itemColor = Brushes.Red;

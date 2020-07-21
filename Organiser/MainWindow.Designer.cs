@@ -54,7 +54,7 @@
             this.checkBoxColorCoding = new System.Windows.Forms.CheckBox();
             this.label7 = new System.Windows.Forms.Label();
             this.txtBoxSearch = new System.Windows.Forms.TextBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.checkBoxHideCompleted = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -267,7 +267,7 @@
             // 
             this.listBoxOutput.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.listBoxOutput.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.listBoxOutput.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listBoxOutput.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listBoxOutput.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
             this.listBoxOutput.FormattingEnabled = true;
             this.listBoxOutput.ItemHeight = 18;
@@ -304,7 +304,7 @@
             // checkBoxColorCoding
             // 
             this.checkBoxColorCoding.AutoSize = true;
-            this.checkBoxColorCoding.Location = new System.Drawing.Point(649, 624);
+            this.checkBoxColorCoding.Location = new System.Drawing.Point(633, 622);
             this.checkBoxColorCoding.Name = "checkBoxColorCoding";
             this.checkBoxColorCoding.Size = new System.Drawing.Size(152, 20);
             this.checkBoxColorCoding.TabIndex = 12;
@@ -315,40 +315,40 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(437, 12);
+            this.label7.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(432, 9);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(49, 16);
+            this.label7.Size = new System.Drawing.Size(62, 18);
             this.label7.TabIndex = 10;
-            this.label7.Text = "Search";
+            this.label7.Text = "Search:";
             // 
             // txtBoxSearch
             // 
             this.txtBoxSearch.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBoxSearch.Location = new System.Drawing.Point(504, 10);
+            this.txtBoxSearch.Location = new System.Drawing.Point(494, 8);
             this.txtBoxSearch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtBoxSearch.Name = "txtBoxSearch";
-            this.txtBoxSearch.Size = new System.Drawing.Size(249, 21);
+            this.txtBoxSearch.Size = new System.Drawing.Size(611, 21);
             this.txtBoxSearch.TabIndex = 10;
             this.txtBoxSearch.TextChanged += new System.EventHandler(this.txtBoxSearch_TextChanged);
             this.txtBoxSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBoxSearch_KeyDown);
             // 
-            // checkBox1
+            // checkBoxHideCompleted
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(807, 624);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(119, 20);
-            this.checkBox1.TabIndex = 13;
-            this.checkBox1.Text = "Hide Completed";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.checkBoxHideCompleted.AutoSize = true;
+            this.checkBoxHideCompleted.Location = new System.Drawing.Point(633, 641);
+            this.checkBoxHideCompleted.Name = "checkBoxHideCompleted";
+            this.checkBoxHideCompleted.Size = new System.Drawing.Size(119, 20);
+            this.checkBoxHideCompleted.TabIndex = 13;
+            this.checkBoxHideCompleted.Text = "Hide Completed";
+            this.checkBoxHideCompleted.UseVisualStyleBackColor = true;
+            this.checkBoxHideCompleted.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // MainWindow
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(1113, 676);
-            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.checkBoxHideCompleted);
             this.Controls.Add(this.txtBoxSearch);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.checkBoxColorCoding);
@@ -398,7 +398,7 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox txtBoxPassword;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox checkBoxHideCompleted;
     }
 }
 

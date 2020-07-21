@@ -94,6 +94,7 @@
     <Compile Include="Models\ConnectionDetails.cs" />
     <Compile Include="Models\Enums\ProjectState.cs" />
     <Compile Include="Models\ProjectEntry.cs" />
+    <Compile Include="Models\SystemEntry.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="EditWindow.resx">

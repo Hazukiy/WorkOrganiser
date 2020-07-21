@@ -29,10 +29,11 @@ namespace Organiser.Database
 
         #region Private Methods
         private readonly string _collectionName = "Entries";
+        private readonly string _systemCollectionName = "System";
         private static string _databasePath;
         private static string _databaseFile;
         private static string _fullPath;
-        private static bool _hideCompleted;
+        private static string _backupPath;
         #endregion
 
         private string DatabaseConnection
@@ -44,6 +45,19 @@ namespace Organiser.Database
                     _fullPath = Path.Combine(_databasePath, _databaseFile);
                 }
                 return _fullPath;
+            }
+        }
+
+        public string BackupLocation
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(_backupPath))
+                {
+                    _backupPath = Path.Combine(_databasePath, "Backups", $"{DateTime.Now.ToString("dd-MM-yyyy")}");
+                }
+
+                return _backupPath;
             }
         }
 
@@ -62,16 +76,63 @@ namespace Organiser.Database
                 Trace.WriteLine($"DatabaseFile config value is empty; setting default to: {ConfigurationManager.AppSettings["DatabaseFile"]}");
             }
 
-            if(!bool.TryParse(ConfigurationManager.AppSettings["HideCompleted"], out bool hideCompletedResult))
-            {
-                hideCompletedResult = true;
-                Trace.WriteLine($"Failed to parse config value HideCompleted; setting default to: true");
-            }
-
             //Set config values
             _databasePath = ConfigurationManager.AppSettings["DatabasePath"].ToString();
             _databaseFile = ConfigurationManager.AppSettings["DatabaseFile"].ToString();
-            _hideCompleted = hideCompletedResult;
+        }
+
+        public bool ProcessDatabaseBackup()
+        {
+            var retVal = false;
+            try
+            {
+                using (var db = new LiteDatabase(DatabaseConnection))
+                {
+                    var col = db.GetCollection<SystemEntry>(_systemCollectionName);
+
+                    var record = col.FindOne(x => x.Id == 1);
+                    if (record != null)
+                    {
+                        if (record.LastDatabaseUpdate < DateTime.Parse(DateTime.Now.ToString("dd/MM/yyyy")))
+                        {
+                            retVal = true;
+                        }
+                        else
+                        {
+                            retVal = false;
+                        }
+                    }
+                    else
+                    {
+                        var newRecord = new SystemEntry()
+                        {
+                            Id = 1,
+                            LastDatabaseUpdate = DateTime.Parse(DateTime.Now.ToString("dd/MM/yyyy"))
+                        };
+                        col.Insert(newRecord);
+                        retVal = true;
+                    }
+                }
+
+                //Begin backup of the main database
+                if (retVal)
+                {
+                    //Firstly create directory
+                    if (!Directory.Exists(BackupLocation))
+                    {
+                        Directory.CreateDirectory(BackupLocation);
+                    }
+
+                    //Copy across main db to new backup path
+                    File.Copy(DatabaseConnection, $"{BackupLocation}/{_databaseFile}");
+                }
+            }
+            catch (Exception ex)
+            {
+                ErrorHandler.ThrowError(ex);
+            }
+
+            return retVal;
         }
 
         public void InsertNewRecord(ProjectEntry entry)
@@ -81,8 +142,6 @@ namespace Organiser.Database
                 using (var db = new LiteDatabase(DatabaseConnection))
                 {
                     var col = db.GetCollection<ProjectEntry>(_collectionName);
-
-
 
                     col.Insert(entry);
 
@@ -103,15 +162,7 @@ namespace Organiser.Database
                 using (var db = new LiteDatabase(DatabaseConnection))
                 {
                     var col = db.GetCollection<ProjectEntry>(_collectionName).FindAll();
-
-                    if(_hideCompleted)
-                    {
-                        retVal = col.Where(x => x.State != ProjectState.Complete).ToList();
-                    }
-                    else
-                    {
-                        retVal = col.ToList();
-                    }
+                    retVal = col.ToList();
                 }
             }
             catch (Exception ex)
