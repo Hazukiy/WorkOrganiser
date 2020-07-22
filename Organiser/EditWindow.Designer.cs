@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditWindow));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnCopyDetails = new System.Windows.Forms.Button();
             this.txtBoxExtraValues = new System.Windows.Forms.TextBox();
             this.txtBoxPassword = new System.Windows.Forms.TextBox();
             this.txtBoxUsername = new System.Windows.Forms.TextBox();
@@ -46,7 +47,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.ddlEntryState = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnCopyDetails = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -76,6 +76,17 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "{TITLE}";
+            // 
+            // btnCopyDetails
+            // 
+            this.btnCopyDetails.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCopyDetails.Location = new System.Drawing.Point(6, 335);
+            this.btnCopyDetails.Name = "btnCopyDetails";
+            this.btnCopyDetails.Size = new System.Drawing.Size(165, 34);
+            this.btnCopyDetails.TabIndex = 14;
+            this.btnCopyDetails.Text = "Copy Details";
+            this.btnCopyDetails.UseVisualStyleBackColor = true;
+            this.btnCopyDetails.Click += new System.EventHandler(this.btnCopyDetails_Click);
             // 
             // txtBoxExtraValues
             // 
@@ -179,7 +190,7 @@
             this.lblChangesPending.AutoSize = true;
             this.lblChangesPending.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblChangesPending.ForeColor = System.Drawing.Color.Maroon;
-            this.lblChangesPending.Location = new System.Drawing.Point(538, 335);
+            this.lblChangesPending.Location = new System.Drawing.Point(385, 300);
             this.lblChangesPending.Name = "lblChangesPending";
             this.lblChangesPending.Size = new System.Drawing.Size(113, 16);
             this.lblChangesPending.TabIndex = 2;
@@ -200,7 +211,7 @@
             // btnSave
             // 
             this.btnSave.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(382, 318);
+            this.btnSave.Location = new System.Drawing.Point(388, 319);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(150, 51);
             this.btnSave.TabIndex = 1;
@@ -238,17 +249,6 @@
             this.label1.Size = new System.Drawing.Size(43, 16);
             this.label1.TabIndex = 0;
             this.label1.Text = "State:";
-            // 
-            // btnCopyDetails
-            // 
-            this.btnCopyDetails.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCopyDetails.Location = new System.Drawing.Point(6, 335);
-            this.btnCopyDetails.Name = "btnCopyDetails";
-            this.btnCopyDetails.Size = new System.Drawing.Size(165, 34);
-            this.btnCopyDetails.TabIndex = 14;
-            this.btnCopyDetails.Text = "Copy Details";
-            this.btnCopyDetails.UseVisualStyleBackColor = true;
-            this.btnCopyDetails.Click += new System.EventHandler(this.btnCopyDetails_Click);
             // 
             // EditWindow
             // 

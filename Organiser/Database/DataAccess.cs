@@ -95,6 +95,9 @@ namespace Organiser.Database
                     {
                         if (record.LastDatabaseUpdate < DateTime.Parse(DateTime.Now.ToString("dd/MM/yyyy")))
                         {
+                            //Update last update time
+                            record.LastDatabaseUpdate = DateTime.Parse(DateTime.Now.ToString("dd/MM/yyyy"));
+                            col.Update(record);
                             retVal = true;
                         }
                         else
