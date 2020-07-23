@@ -13,11 +13,12 @@
         TextOptions.TextFormattingMode="Ideal" 
         TextOptions.TextRenderingMode="Auto"        
         Background="{DynamicResource MaterialDesignPaper}"
-        FontFamily="{DynamicResource MaterialDesignFont}" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+        FontFamily="{DynamicResource MaterialDesignFont}" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
     <Grid HorizontalAlignment="Left" Width="147" Background="#FF3C3C3C">
-        <Button x:Name="projectsButton" Content="Projects" Height="46" VerticalAlignment="Top" HorizontalAlignment="Right" Width="147" Click="projectsButton_Click"/>
-        <Button x:Name="notesButton" Content="Notes" HorizontalAlignment="Left" Height="46" VerticalAlignment="Top" Width="147" Click="notesButton_Click" Margin="0,51,0,0"/>
-        <Button x:Name="projectHistoryButton" Content="Project History" HorizontalAlignment="Left" Height="46" VerticalAlignment="Top" Width="147" Click="projectHistoryButton_Click" Margin="0,102,0,0"/>
+        <Button x:Name="projectsButton" Content="Active Projects" Height="46" VerticalAlignment="Top" HorizontalAlignment="Right" Width="147" Click="projectsButton_Click" Foreground="White" Background="#FF0069C1" BorderBrush="#FF0063C5"/>
+        <Button x:Name="projectHistoryButton" Content="Project History" HorizontalAlignment="Left" Height="46" VerticalAlignment="Top" Width="147" Click="projectHistoryButton_Click" Margin="0,51,0,0" Foreground="White" Background="#FF0069C1" BorderBrush="#FF0063C5"/>
+        <Button x:Name="createNewButton" Content="Add New Project" HorizontalAlignment="Left" Height="46" VerticalAlignment="Top" Width="147" Click="notesButton_Click" Margin="0,102,0,0" Foreground="White" Background="#FF0069C1" BorderBrush="#FF0063C5"/>
+        <Button x:Name="notesButton" Content="Notes" HorizontalAlignment="Left" Height="46" VerticalAlignment="Top" Width="147" Click="notesButton_Click" Margin="0,153,0,0" Foreground="White" Background="#FF0069C1" BorderBrush="#FF0063C5"/>
         <Grid HorizontalAlignment="Right" Height="690" Margin="0,0,-1095,0" VerticalAlignment="Top" Width="1094">
             <ContentControl x:Name="MainContentControl" Content="ContentControl" HorizontalAlignment="Left" VerticalAlignment="Top" Height="680" Width="1094" Margin="1,0,0,0"/>
         </Grid>

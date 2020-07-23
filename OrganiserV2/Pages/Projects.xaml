@@ -8,7 +8,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="1095">
     <Grid>
-        <ListBox x:Name="currentProjectsList" HorizontalAlignment="Left" Height="408" Margin="0,42,0,0" VerticalAlignment="Top" Width="1095"/>
+        <ListBox x:Name="currentProjectsList" HorizontalAlignment="Left" Height="408" Margin="0,42,0,0" VerticalAlignment="Top" Width="1095" PreviewMouseDown="currentProjectsList_PreviewMouseDown"/>
         <Label Content="Current Projects" HorizontalAlignment="Left" VerticalAlignment="Top" Height="42" Width="1095" FontSize="22" Background="#FF404040"/>
     </Grid>
 </UserControl>

@@ -104,7 +104,7 @@ namespace Organiser
                         Details = connectionDetails
                     };
 
-                    projectEntry.Id = listBoxOutput.Items.Count + 2; //Index from 0 & new record
+                    //projectEntry.Id = _entries.Count + 1; //Index from 0 & new record
 
                     _entries.Add(projectEntry);
 

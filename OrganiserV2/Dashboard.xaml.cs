@@ -26,7 +26,7 @@ namespace OrganiserV2
             InitializeComponent();
 
             //Set default load page 
-            MainContentControl.Content = new Projects();
+            MainContentControl.Content = new Projects(this);
         }
 
         private void notesButton_Click(object sender, RoutedEventArgs e)

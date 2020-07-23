@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using OrganiserV2.Database;
 using OrganiserV2.Models;
+using OrganiserV2.Pages;
 using OrganiserV2.Utils;
 
 namespace OrganiserV2
@@ -23,9 +24,26 @@ namespace OrganiserV2
     /// </summary>
     public partial class Projects : UserControl
     {
+        private static Dashboard _dashboard;
+
         public Projects()
         {
             InitializeComponent();
+
+            //Load current projects from database
+            var projects = GetProjectListItems();
+            if (projects != null)
+            {
+                currentProjectsList.ItemsSource = projects;
+            }
+        }
+
+        public Projects(Dashboard dashboard)
+        {
+            InitializeComponent();
+
+            //Set local reference to dashboard
+            _dashboard = dashboard;
 
             //Load current projects from database
             var projects = GetProjectListItems();
@@ -47,8 +65,8 @@ namespace OrganiserV2
                     items.Add(new ListBoxItem()
                     {
                         Content = item.ToString(),
-                        DataContext = item,
-                        Background = GetProjectColor(item.State)
+                        DataContext = item
+                        //Background = GetProjectColor(item.State)
                     });
                 }
 
@@ -79,5 +97,17 @@ namespace OrganiserV2
             }
         }
 
+        private void currentProjectsList_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.RightButton == MouseButtonState.Released)
+            {
+                var item = ItemsControl.ContainerFromElement(currentProjectsList, e.OriginalSource as DependencyObject) as ListBoxItem;
+                if (item != null)
+                {
+                    //Change content view to details window and pass data context
+                    _dashboard.MainContentControl.Content = new ProjectDetails((ProjectInfo)item.DataContext);
+                }
+            }
+        }
     }
 }
