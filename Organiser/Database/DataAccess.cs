@@ -1,9 +1,7 @@
 ﻿using LiteDB;
 using Organiser.Models;
-using Organiser.Models.Enums;
 using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -12,8 +10,13 @@ namespace Organiser.Database
 {
     public class DataAccess
     {
-        #region Singleton
+        #region Fields
         private static DataAccess _instance;
+        private readonly string _collectionName = "Entries";
+        private readonly string _systemCollectionName = "System";
+        #endregion
+
+        #region Properties
         public static DataAccess Instance
         {
             get
@@ -27,58 +30,8 @@ namespace Organiser.Database
         }
         #endregion
 
-        #region Private Methods
-        private readonly string _collectionName = "Entries";
-        private readonly string _systemCollectionName = "System";
-        private static string _databasePath;
-        private static string _databaseFile;
-        private static string _fullPath;
-        private static string _backupPath;
-        #endregion
-
-        private string DatabaseConnection
-        {
-            get
-            {
-                if(string.IsNullOrEmpty(_fullPath))
-                {
-                    _fullPath = Path.Combine(_databasePath, _databaseFile);
-                }
-                return _fullPath;
-            }
-        }
-
-        public string BackupLocation
-        {
-            get
-            {
-                if (string.IsNullOrEmpty(_backupPath))
-                {
-                    _backupPath = Path.Combine(_databasePath, "Backups", $"{DateTime.Now.ToString("dd-MM-yyyy")}");
-                }
-
-                return _backupPath;
-            }
-        }
-
         private DataAccess()
         {
-            //Read in config values
-            if(string.IsNullOrEmpty(ConfigurationManager.AppSettings["DatabasePath"]))
-            {
-                ConfigurationManager.AppSettings["DatabasePath"] = @"D:\";
-                Trace.WriteLine($"DatabasePath config value is empty; setting default to: {ConfigurationManager.AppSettings["DatabasePath"]}");
-            }
-
-            if(string.IsNullOrEmpty(ConfigurationManager.AppSettings["DatabaseFile"]))
-            {
-                ConfigurationManager.AppSettings["DatabaseFile"] = "ProjectOrganiser.db";
-                Trace.WriteLine($"DatabaseFile config value is empty; setting default to: {ConfigurationManager.AppSettings["DatabaseFile"]}");
-            }
-
-            //Set config values
-            _databasePath = ConfigurationManager.AppSettings["DatabasePath"].ToString();
-            _databaseFile = ConfigurationManager.AppSettings["DatabaseFile"].ToString();
         }
 
         public bool ProcessDatabaseBackup()
@@ -86,7 +39,7 @@ namespace Organiser.Database
             var retVal = false;
             try
             {
-                using (var db = new LiteDatabase(DatabaseConnection))
+                using (var db = new LiteDatabase(Constants.DatabaseConnection))
                 {
                     var col = db.GetCollection<SystemEntry>(_systemCollectionName);
 
@@ -121,13 +74,13 @@ namespace Organiser.Database
                 if (retVal)
                 {
                     //Firstly create directory
-                    if (!Directory.Exists(BackupLocation))
+                    if (!Directory.Exists(Constants.BackupLocation))
                     {
-                        Directory.CreateDirectory(BackupLocation);
+                        Directory.CreateDirectory(Constants.BackupLocation);
                     }
 
                     //Copy across main db to new backup path
-                    File.Copy(DatabaseConnection, $"{BackupLocation}/{_databaseFile}");
+                    File.Copy(Constants.DatabaseConnection, $"{Constants.BackupLocation}/{Constants.DatabaseName}");
                 }
             }
             catch (Exception ex)
@@ -142,7 +95,7 @@ namespace Organiser.Database
         {
             try
             {
-                using (var db = new LiteDatabase(DatabaseConnection))
+                using (var db = new LiteDatabase(Constants.DatabaseConnection))
                 {
                     var col = db.GetCollection<ProjectEntry>(_collectionName);
 
@@ -162,7 +115,7 @@ namespace Organiser.Database
             List<ProjectEntry> retVal = null;
             try
             {
-                using (var db = new LiteDatabase(DatabaseConnection))
+                using (var db = new LiteDatabase(Constants.DatabaseConnection))
                 {
                     var col = db.GetCollection<ProjectEntry>(_collectionName).FindAll();
                     retVal = col.ToList();
@@ -180,7 +133,7 @@ namespace Organiser.Database
         {
             try
             {
-                using (var db = new LiteDatabase(DatabaseConnection))
+                using (var db = new LiteDatabase(Constants.DatabaseConnection))
                 {
                     var col = db.GetCollection<ProjectEntry>(_collectionName);
                     col.Delete(record.Id);
@@ -198,7 +151,7 @@ namespace Organiser.Database
         {
             try
             {
-                using (var db = new LiteDatabase(DatabaseConnection))
+                using (var db = new LiteDatabase(Constants.DatabaseConnection))
                 {
                     var col = db.GetCollection<ProjectEntry>(_collectionName);
                     col.Update(record);

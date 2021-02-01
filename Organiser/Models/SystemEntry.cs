@@ -8,7 +8,6 @@ namespace Organiser.Models
 {
     public class SystemEntry
     {
-        //Will be static, so 0
         public int Id { get; set; }
 
         public DateTime LastDatabaseUpdate { get; set; }

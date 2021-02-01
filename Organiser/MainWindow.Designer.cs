@@ -51,10 +51,9 @@
             this.listBoxOutput = new System.Windows.Forms.ListBox();
             this.ddlFilter = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.checkBoxColorCoding = new System.Windows.Forms.CheckBox();
             this.label7 = new System.Windows.Forms.Label();
             this.txtBoxSearch = new System.Windows.Forms.TextBox();
-            this.checkBoxHideCompleted = new System.Windows.Forms.CheckBox();
+            this.HideCompleted = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -278,7 +277,6 @@
             this.listBoxOutput.TabIndex = 1;
             this.listBoxOutput.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBoxOutput_DrawItem);
             this.listBoxOutput.DoubleClick += new System.EventHandler(this.listBoxOutput_DoubleClick);
-            this.listBoxOutput.MouseDown += new System.Windows.Forms.MouseEventHandler(this.listBoxOutput_MouseDown);
             // 
             // ddlFilter
             // 
@@ -301,17 +299,6 @@
             this.label6.TabIndex = 11;
             this.label6.Text = "Filter By:";
             // 
-            // checkBoxColorCoding
-            // 
-            this.checkBoxColorCoding.AutoSize = true;
-            this.checkBoxColorCoding.Location = new System.Drawing.Point(633, 622);
-            this.checkBoxColorCoding.Name = "checkBoxColorCoding";
-            this.checkBoxColorCoding.Size = new System.Drawing.Size(152, 20);
-            this.checkBoxColorCoding.TabIndex = 12;
-            this.checkBoxColorCoding.Text = "Enable Colour Coding";
-            this.checkBoxColorCoding.UseVisualStyleBackColor = true;
-            this.checkBoxColorCoding.CheckedChanged += new System.EventHandler(this.checkBoxColorCoding_CheckedChanged);
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -333,25 +320,24 @@
             this.txtBoxSearch.TextChanged += new System.EventHandler(this.txtBoxSearch_TextChanged);
             this.txtBoxSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBoxSearch_KeyDown);
             // 
-            // checkBoxHideCompleted
+            // HideCompleted
             // 
-            this.checkBoxHideCompleted.AutoSize = true;
-            this.checkBoxHideCompleted.Location = new System.Drawing.Point(633, 641);
-            this.checkBoxHideCompleted.Name = "checkBoxHideCompleted";
-            this.checkBoxHideCompleted.Size = new System.Drawing.Size(119, 20);
-            this.checkBoxHideCompleted.TabIndex = 13;
-            this.checkBoxHideCompleted.Text = "Hide Completed";
-            this.checkBoxHideCompleted.UseVisualStyleBackColor = true;
-            this.checkBoxHideCompleted.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.HideCompleted.AutoSize = true;
+            this.HideCompleted.Location = new System.Drawing.Point(633, 626);
+            this.HideCompleted.Name = "HideCompleted";
+            this.HideCompleted.Size = new System.Drawing.Size(119, 20);
+            this.HideCompleted.TabIndex = 13;
+            this.HideCompleted.Text = "Hide Completed";
+            this.HideCompleted.UseVisualStyleBackColor = true;
+            this.HideCompleted.CheckedChanged += new System.EventHandler(this.HideCompleted_CheckedChanged);
             // 
             // MainWindow
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(1113, 676);
-            this.Controls.Add(this.checkBoxHideCompleted);
+            this.Controls.Add(this.HideCompleted);
             this.Controls.Add(this.txtBoxSearch);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.checkBoxColorCoding);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.listBoxOutput);
             this.Controls.Add(this.ddlFilter);
@@ -387,7 +373,6 @@
         private System.Windows.Forms.ComboBox ddlState;
         private System.Windows.Forms.ComboBox ddlFilter;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.CheckBox checkBoxColorCoding;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtBoxSearch;
         private System.Windows.Forms.Label label8;
@@ -398,7 +383,7 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox txtBoxPassword;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.CheckBox checkBoxHideCompleted;
+        private System.Windows.Forms.CheckBox HideCompleted;
     }
 }
 

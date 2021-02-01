@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
@@ -14,9 +15,7 @@ namespace Organiser
     public partial class MainWindow : Form
     {
         private static BindingList<ProjectEntry> _entries = new BindingList<ProjectEntry>();
-        private bool _hasInspectionOpen;
         private bool _hasEditOpen;
-        private bool _useColourCoding;
 
         public MainWindow()
         {
@@ -39,21 +38,20 @@ namespace Organiser
             ddlFilter.DataSource = Enum.GetValues(typeof(ProjectState));
             ddlState.SelectedIndex = 0;
             ddlFilter.SelectedIndex = -1;
-            checkBoxColorCoding.Checked = true;
-            checkBoxHideCompleted.Checked = true;
+            HideCompleted.Checked = true;
 
             //Backup database
             var result = DataAccess.Instance.ProcessDatabaseBackup();
             if (result)
             {
-                DisplayDialog($"Database has been backed up to: {DataAccess.Instance.BackupLocation}");
+                DisplayDialog($"Database has been backed up to: {Constants.BackupLocation}");
             }
         }
 
         #region Control Events
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        private void HideCompleted_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBoxHideCompleted.Checked)
+            if (HideCompleted.Checked)
             {
                 listBoxOutput.DataSource = _entries
                     .Where(x => x.State != ProjectState.Complete)
@@ -104,8 +102,6 @@ namespace Organiser
                         Details = connectionDetails
                     };
 
-                    //projectEntry.Id = _entries.Count + 1; //Index from 0 & new record
-
                     _entries.Add(projectEntry);
 
                     DataAccess.Instance.InsertNewRecord(projectEntry);
@@ -120,39 +116,7 @@ namespace Organiser
                 ErrorHandler.ThrowError(ex);
             }
         }
-        private void listBoxOutput_MouseDown(object sender, MouseEventArgs e)
-        {
-            try
-            {
-                if (e.Button == MouseButtons.Right)
-                {
-                    if (!_hasInspectionOpen)
-                    {
-                        var selected = listBoxOutput.IndexFromPoint(e.X, e.Y);
-                        if (selected != -1)
-                        {
-                            var data = listBoxOutput.Items[selected] as ProjectEntry;
 
-                            DetailsWindow form = new DetailsWindow(data);
-                            form.Text = data.Title;
-                            form.StartPosition = FormStartPosition.CenterScreen;
-                            form.FormClosed += Form_FormClosed;
-                            form.RecordDeleted += RecordDeletedCallback;
-                            form.Show();
-                            _hasInspectionOpen = true;
-                        }
-                    }
-                }
-            }
-            catch(Exception ex)
-            {
-                ErrorHandler.ThrowError(ex);
-            }
-        }
-        private void Form_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            _hasInspectionOpen = false;
-        }
         private void listBoxOutput_DoubleClick(object sender, EventArgs e)
         {
             try
@@ -168,6 +132,7 @@ namespace Organiser
                         edit.StartPosition = FormStartPosition.CenterScreen;
                         edit.FormClosed += Edit_FormClosed;
                         edit.ChangesMade += EntryChangesCallback;
+                        edit.RecordDeleted += RecordDeletedCallback;
                         edit.Show();
                         _hasEditOpen = true;
                     }
@@ -178,10 +143,12 @@ namespace Organiser
                 ErrorHandler.ThrowError(ex);
             }
         }
+
         private void Edit_FormClosed(object sender, FormClosedEventArgs e)
         {
             _hasEditOpen = false;
         }
+
         private void ddlFilter_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -204,11 +171,7 @@ namespace Organiser
                 ErrorHandler.ThrowError(ex);
             }
         }
-        private void checkBoxColorCoding_CheckedChanged(object sender, EventArgs e)
-        {
-            _useColourCoding = checkBoxColorCoding.Checked;
-            RefreshOutput();
-        }
+
         private void listBoxOutput_DrawItem(object sender, DrawItemEventArgs e)
         {
             e.DrawBackground();
@@ -216,33 +179,26 @@ namespace Organiser
             var item = ((ListBox)sender).Items[e.Index];
             var data = (ProjectEntry)((ListBox)sender).Items[e.Index];
 
-            if (_useColourCoding)
+            Brush itemColor = Brushes.White;
+            switch (data.State)
             {
-                Brush itemColor = Brushes.White;
-                switch (data.State)
-                {
-                    case ProjectState.Active:
-                        itemColor = Brushes.LimeGreen;
-                        break;
-                    case ProjectState.Blocked:
-                        itemColor = Brushes.Red;
-                        break;
-                    case ProjectState.Complete:
-                        itemColor = Brushes.Gray;
-                        break;
-                    case ProjectState.Validation:
-                        itemColor = Brushes.Aqua;
-                        break;
-                }
+                case ProjectState.Active:
+                    itemColor = Constants.ActiveItem;
+                    break;
+                case ProjectState.Blocked:
+                    itemColor = Constants.BlockedItem;
+                    break;
+                case ProjectState.Complete:
+                    itemColor = Constants.CompletedItem;
+                    break;
+                case ProjectState.Validation:
+                    itemColor = Constants.ValidationItem;
+                    break;
+            }
 
-                //Draw item
-                e.Graphics.DrawString(item.ToString(), e.Font, itemColor, e.Bounds, StringFormat.GenericDefault);
-            }
-            else
-            {
-                //Draw item
-                e.Graphics.DrawString(item.ToString(), e.Font, Brushes.White, e.Bounds, StringFormat.GenericDefault); ;
-            }
+            //Draw item
+            e.Graphics.DrawString(item.ToString(), e.Font, itemColor, e.Bounds, StringFormat.GenericDefault);
+
             e.DrawFocusRectangle();
             listBoxOutput.SelectedIndex = -1;
         }
@@ -268,7 +224,25 @@ namespace Organiser
         }
         #endregion
 
-        #region Private Methods
+        private List<ProjectEntry> GetProjects()
+        {
+            if(HideCompleted.Checked)
+            {
+                return _entries
+                    .Where(x => x.State != ProjectState.Complete)
+                    .OrderByDescending(x => x.State == ProjectState.Active)
+                    .OrderByDescending(x => x.State == ProjectState.Validation)
+                    .ToList();
+            }
+            else
+            {
+                return _entries
+                    .OrderByDescending(x => x.State == ProjectState.Active)
+                    .OrderByDescending(x => x.State == ProjectState.Validation)
+                    .ToList();
+            }                   
+        }
+
         /// <summary>
         /// Validates that the form data needed is there
         /// </summary>
@@ -321,10 +295,7 @@ namespace Organiser
                 listBoxOutput.Items.Clear();
 
                 //Then sort & reassign values
-                listBoxOutput.DataSource = _entries
-                    .OrderByDescending(x => x.State == ProjectState.Active)
-                    .OrderByDescending(x => x.State == ProjectState.Validation)
-                    .ToList();
+                listBoxOutput.DataSource = GetProjects();
                 listBoxOutput.Refresh();
             }
             catch(Exception ex)
@@ -386,9 +357,7 @@ namespace Organiser
                 ErrorHandler.ThrowError(ex);
             }
         }
-        #endregion
 
-        #region Callbacks
         private void RecordDeletedCallback(object sender, ProjectEntry entry)
         {
             try
@@ -426,6 +395,5 @@ namespace Organiser
                 ErrorHandler.ThrowError(ex);
             }
         }
-        #endregion
     }
 }

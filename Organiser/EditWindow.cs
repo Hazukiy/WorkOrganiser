@@ -1,15 +1,10 @@
-﻿using Organiser.Models;
-using Organiser.Models.Enums;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using System.Windows.Forms;
+using Organiser.Models;
+using Organiser.Models.Enums;
 using Organiser.Extensions.Auto_Paste_Details_Plugin;
+using Organiser.Database;
+using System.Diagnostics;
 
 namespace Organiser
 {
@@ -17,6 +12,7 @@ namespace Organiser
     {
         private static ProjectEntry _localInstance;
 
+        public EventHandler<ProjectEntry> RecordDeleted;
         public EventHandler<ProjectEntry> ChangesMade;
 
         public EditWindow()
@@ -40,6 +36,11 @@ namespace Organiser
             txtBoxUsername.Text = entry.Details.Username;
             txtBoxPassword.Text = entry.Details.Password;
             txtBoxExtraValues.Text = entry.Details.ExtraValue;
+
+            ADOLink.Text = entry.URL;
+            ADOLink.Links[0].LinkData = entry.URL;
+
+            CreationDate.Text = entry.DateCreated.ToString();
 
             btnSave.Enabled = false;
             lblChangesPending.Visible = false;
@@ -140,6 +141,33 @@ namespace Organiser
         {
             var data = SerialiseLogic.Instance.ConvertToJSON(_localInstance.Details);
             Clipboard.SetText(data);
+        }
+
+        private void ADOLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            var target = e.Link.LinkData as string;
+            if (target != null)
+            {
+                Process.Start(target);
+            }
+        }
+
+        private void DeleteRecord_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var result = MessageBox.Show("Are you sure you want to delete this record?", "Delete Record", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information);
+                if (result == DialogResult.Yes)
+                {
+                    DataAccess.Instance.DeleteRecord(_localInstance);
+                    RecordDeleted?.Invoke(this, _localInstance);
+                    this.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                Trace.WriteLine(ex);
+            }
         }
     }
 }

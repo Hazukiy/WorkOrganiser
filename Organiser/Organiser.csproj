@@ -69,6 +69,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Utils\Constants.cs" />
     <Compile Include="Database\DataAccess.cs" />
     <Compile Include="EditWindow.cs">
       <SubType>Form</SubType>
@@ -76,7 +77,7 @@
     <Compile Include="EditWindow.Designer.cs">
       <DependentUpon>EditWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="ErrorHandler.cs" />
+    <Compile Include="Utils\ErrorHandler.cs" />
     <Compile Include="Extensions\Auto-Paste Details Plugin\SerialisedConnectionDetails.cs" />
     <Compile Include="Extensions\Auto-Paste Details Plugin\SerialiseLogic.cs" />
     <Compile Include="MainWindow.cs">
@@ -84,12 +85,6 @@
     </Compile>
     <Compile Include="MainWindow.Designer.cs">
       <DependentUpon>MainWindow.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DetailsWindow.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DetailsWindow.Designer.cs">
-      <DependentUpon>DetailsWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\ConnectionDetails.cs" />
     <Compile Include="Models\Enums\ProjectState.cs" />
@@ -102,9 +97,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DetailsWindow.resx">
-      <DependentUpon>DetailsWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -124,9 +116,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
