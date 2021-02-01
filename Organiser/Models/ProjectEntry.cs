@@ -1,5 +1,5 @@
-﻿using Organiser.Models.Enums;
-using System;
+﻿using System;
+using Organiser.Models.Enums;
 
 namespace Organiser.Models
 {

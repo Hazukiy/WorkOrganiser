@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Organiser.Models.Enums
+﻿namespace Organiser.Models.Enums
 {
     public enum ProjectState
     {

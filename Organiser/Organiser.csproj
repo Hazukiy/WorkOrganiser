@@ -48,7 +48,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>assets\img\book-icon.ico</ApplicationIcon>
+    <ApplicationIcon>Assets\img\book-icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="PresentationCore" />
@@ -69,6 +69,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\ProjectNotes.cs" />
+    <Compile Include="Notes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Notes.Designer.cs">
+      <DependentUpon>Notes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Utils\Constants.cs" />
     <Compile Include="Database\DataAccess.cs" />
     <Compile Include="EditWindow.cs">
@@ -97,6 +104,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Notes.resx">
+      <DependentUpon>Notes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -130,8 +140,8 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="assets\img\book-icon.ico" />
-    <Content Include="assets\img\book-icon.png" />
+    <Content Include="Assets\img\book-icon.ico" />
+    <Content Include="Assets\img\book-icon.png" />
     <Content Include="Extensions\Auto-Paste Details Plugin\AutoConnectionDetails.js" />
     <Content Include="Extensions\Auto-Paste Details Plugin\Info.txt" />
   </ItemGroup>

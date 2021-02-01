@@ -17,6 +17,7 @@ namespace Organiser
         #region Fields
         private static BindingList<ProjectEntry> _entries = new BindingList<ProjectEntry>();
         private bool _isDetailsOpen;
+        private bool _isNotesOpen;
         #endregion
 
         public MainWindow()
@@ -117,7 +118,6 @@ namespace Organiser
                         //Open quick edit window
                         EditWindow edit = new EditWindow(selected);
                         edit.Text = selected.Title;
-                        edit.StartPosition = FormStartPosition.CenterScreen;
                         edit.FormClosed += Edit_FormClosed;
                         edit.ChangesMade += EntryChangesCallback;
                         edit.RecordDeleted += RecordDeletedCallback;
@@ -209,6 +209,29 @@ namespace Organiser
             {
                 RefreshOutput();
             }
+        }
+
+        private void Notes_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!_isNotesOpen)
+                {
+                    Notes note = new Notes();
+                    note.FormClosed += Note_FormClosed;
+                    note.Show();
+                    _isNotesOpen = true;
+                }
+            }
+            catch(Exception ex)
+            {
+                ErrorHandler.ThrowError(ex);
+            }
+        }
+
+        private void Note_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            _isNotesOpen = false;
         }
         #endregion
 

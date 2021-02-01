@@ -1,10 +1,10 @@
-﻿using LiteDB;
-using Organiser.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using Organiser.Models;
+using LiteDB;
 
 namespace Organiser.Database
 {
@@ -13,6 +13,7 @@ namespace Organiser.Database
         #region Fields
         private static DataAccess _instance;
         private readonly string _collectionName = "Entries";
+        private readonly string _notesCollection = "Notes";
         private readonly string _systemCollectionName = "System";
         #endregion
 
@@ -46,10 +47,10 @@ namespace Organiser.Database
                     var record = col.FindOne(x => x.Id == 1);
                     if (record != null)
                     {
-                        if (record.LastDatabaseUpdate < DateTime.Parse(DateTime.Now.ToString("dd/MM/yyyy")))
+                        if (record.LastDatabaseUpdate < DateTime.Parse(DateTime.Now.ToString(Constants.StandardDateTimeFormat)))
                         {
                             //Update last update time
-                            record.LastDatabaseUpdate = DateTime.Parse(DateTime.Now.ToString("dd/MM/yyyy"));
+                            record.LastDatabaseUpdate = DateTime.Parse(DateTime.Now.ToString(Constants.StandardDateTimeFormat));
                             col.Update(record);
                             retVal = true;
                         }
@@ -63,7 +64,7 @@ namespace Organiser.Database
                         var newRecord = new SystemEntry()
                         {
                             Id = 1,
-                            LastDatabaseUpdate = DateTime.Parse(DateTime.Now.ToString("dd/MM/yyyy"))
+                            LastDatabaseUpdate = DateTime.Parse(DateTime.Now.ToString(Constants.StandardDateTimeFormat))
                         };
                         col.Insert(newRecord);
                         retVal = true;
@@ -128,7 +129,6 @@ namespace Organiser.Database
             return retVal;
         }
 
-
         public void DeleteRecord(ProjectEntry record)
         {
             try
@@ -164,5 +164,84 @@ namespace Organiser.Database
                 ErrorHandler.ThrowError(ex);
             }
         }
+
+        public void UpsertNote(ProjectNotes entry)
+        {
+            try
+            {
+                using (var db = new LiteDatabase(Constants.DatabaseConnection))
+                {
+                    var col = db.GetCollection<ProjectNotes>(_notesCollection);
+                    col.Upsert(entry);
+
+                    Trace.WriteLine($"Entry: {entry.Id} Updated/Inserted");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                ErrorHandler.ThrowError(ex);
+            }
+        }
+
+        public List<ProjectNotes> GetHistoryNotes()
+        {
+            List<ProjectNotes> retVal = null;
+            try
+            {
+                using (var db = new LiteDatabase(Constants.DatabaseConnection))
+                {
+                    var today = DateTime.Parse(DateTime.Now.ToString(Constants.StandardDateTimeFormat));
+                    var col = db.GetCollection<ProjectNotes>(_notesCollection).FindAll();
+                    retVal = col.Where(x => x.Created != today).ToList();
+
+                    Trace.WriteLine($"Retrieved {retVal.Count} Notes");
+                }
+            }
+            catch (Exception ex)
+            {
+                ErrorHandler.ThrowError(ex);
+            }
+            return retVal;
+        }
+
+        public ProjectNotes GetTodaysNotes()
+        {
+            ProjectNotes retVal = null;
+            try
+            {
+                using (var db = new LiteDatabase(Constants.DatabaseConnection))
+                {
+                    var today = DateTime.Parse(DateTime.Now.ToString(Constants.StandardDateTimeFormat));
+                    var col = db.GetCollection<ProjectNotes>(_notesCollection).FindOne(x => x.Created == today);
+                    retVal = col;
+                }
+            }
+            catch (Exception ex)
+            {
+                ErrorHandler.ThrowError(ex);
+            }
+            return retVal;
+        }
+
+        public void DeleteCollection()
+        {
+            try
+            {
+                using (var db = new LiteDatabase(Constants.DatabaseConnection))
+                {
+                    var today = DateTime.Parse(DateTime.Now.ToString(Constants.StandardDateTimeFormat));
+                    var col = db.GetCollection<ProjectNotes>(_notesCollection);
+                    var ret = col.DeleteMany(x => x.Id > 0);
+
+                    Trace.WriteLine($"Return val: {ret}");
+                }
+            }
+            catch (Exception ex)
+            {
+                ErrorHandler.ThrowError(ex);
+            }
+        }
+
     }
 }

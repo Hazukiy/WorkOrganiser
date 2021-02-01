@@ -54,6 +54,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.ProjectSearch = new System.Windows.Forms.TextBox();
             this.HideCompleted = new System.Windows.Forms.CheckBox();
+            this.Notes = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -88,7 +89,7 @@
             // 
             // txtBoxExtraValue
             // 
-            this.txtBoxExtraValue.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.txtBoxExtraValue.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.txtBoxExtraValue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtBoxExtraValue.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBoxExtraValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
@@ -110,7 +111,7 @@
             // 
             // txtBoxPassword
             // 
-            this.txtBoxPassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.txtBoxPassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.txtBoxPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtBoxPassword.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBoxPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
@@ -132,7 +133,7 @@
             // 
             // txtBoxUsername
             // 
-            this.txtBoxUsername.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.txtBoxUsername.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.txtBoxUsername.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtBoxUsername.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBoxUsername.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
@@ -154,7 +155,7 @@
             // 
             // txtBoxHostPort
             // 
-            this.txtBoxHostPort.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.txtBoxHostPort.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.txtBoxHostPort.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtBoxHostPort.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBoxHostPort.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
@@ -186,7 +187,7 @@
             // 
             // ddlState
             // 
-            this.ddlState.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.ddlState.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.ddlState.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ddlState.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.ddlState.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -199,20 +200,21 @@
             // 
             // InsertRecord
             // 
+            this.InsertRecord.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.InsertRecord.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.InsertRecord.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.InsertRecord.Font = new System.Drawing.Font("Arial", 12.75F, System.Drawing.FontStyle.Bold);
             this.InsertRecord.Location = new System.Drawing.Point(6, 598);
             this.InsertRecord.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.InsertRecord.Name = "InsertRecord";
             this.InsertRecord.Size = new System.Drawing.Size(397, 42);
             this.InsertRecord.TabIndex = 7;
-            this.InsertRecord.Text = "Insert Record";
-            this.InsertRecord.UseVisualStyleBackColor = true;
+            this.InsertRecord.Text = "Create";
+            this.InsertRecord.UseVisualStyleBackColor = false;
             this.InsertRecord.Click += new System.EventHandler(this.InsertRecord_Click);
             // 
             // txtBoxComments
             // 
-            this.txtBoxComments.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.txtBoxComments.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.txtBoxComments.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBoxComments.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
             this.txtBoxComments.Location = new System.Drawing.Point(6, 202);
@@ -235,7 +237,7 @@
             // 
             // txtBoxLink
             // 
-            this.txtBoxLink.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.txtBoxLink.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.txtBoxLink.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtBoxLink.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBoxLink.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
@@ -257,7 +259,7 @@
             // 
             // txtBoxTitle
             // 
-            this.txtBoxTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.txtBoxTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.txtBoxTitle.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtBoxTitle.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBoxTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
@@ -287,7 +289,7 @@
             // 
             // ProjectList
             // 
-            this.ProjectList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.ProjectList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.ProjectList.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.ProjectList.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ProjectList.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
@@ -303,7 +305,7 @@
             // 
             // ProjectStateFilter
             // 
-            this.ProjectStateFilter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.ProjectStateFilter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.ProjectStateFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ProjectStateFilter.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.ProjectStateFilter.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -337,7 +339,7 @@
             // 
             // ProjectSearch
             // 
-            this.ProjectSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.ProjectSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.ProjectSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.ProjectSearch.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ProjectSearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
@@ -360,11 +362,26 @@
             this.HideCompleted.UseVisualStyleBackColor = true;
             this.HideCompleted.CheckedChanged += new System.EventHandler(this.HideCompleted_CheckedChanged);
             // 
+            // Notes
+            // 
+            this.Notes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.Notes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Notes.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Notes.Location = new System.Drawing.Point(978, 626);
+            this.Notes.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Notes.Name = "Notes";
+            this.Notes.Size = new System.Drawing.Size(127, 37);
+            this.Notes.TabIndex = 18;
+            this.Notes.Text = "Notes";
+            this.Notes.UseVisualStyleBackColor = false;
+            this.Notes.Click += new System.EventHandler(this.Notes_Click);
+            // 
             // MainWindow
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
             this.ClientSize = new System.Drawing.Size(1113, 676);
+            this.Controls.Add(this.Notes);
             this.Controls.Add(this.HideCompleted);
             this.Controls.Add(this.ProjectSearch);
             this.Controls.Add(this.label7);
@@ -415,6 +432,7 @@
         private System.Windows.Forms.TextBox txtBoxPassword;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.CheckBox HideCompleted;
+        private System.Windows.Forms.Button Notes;
     }
 }
 

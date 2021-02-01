@@ -35,49 +35,50 @@
             this.CreationDate = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.ADOLink = new System.Windows.Forms.LinkLabel();
-            this.btnCopyDetails = new System.Windows.Forms.Button();
-            this.txtBoxExtraValues = new System.Windows.Forms.TextBox();
-            this.txtBoxPassword = new System.Windows.Forms.TextBox();
-            this.txtBoxUsername = new System.Windows.Forms.TextBox();
-            this.txtBoxPort = new System.Windows.Forms.TextBox();
-            this.txtBoxHost = new System.Windows.Forms.TextBox();
+            this.CopyDetails = new System.Windows.Forms.Button();
+            this.Extravalue = new System.Windows.Forms.TextBox();
+            this.Password = new System.Windows.Forms.TextBox();
+            this.Username = new System.Windows.Forms.TextBox();
+            this.Port = new System.Windows.Forms.TextBox();
+            this.Host = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.lblChangesPending = new System.Windows.Forms.Label();
-            this.txtBoxComments = new System.Windows.Forms.TextBox();
-            this.btnSave = new System.Windows.Forms.Button();
+            this.ChangesPending = new System.Windows.Forms.Label();
+            this.Comments = new System.Windows.Forms.TextBox();
+            this.Save = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.ddlEntryState = new System.Windows.Forms.ComboBox();
+            this.State = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.groupBox1.Controls.Add(this.DeleteRecord);
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.CreationDate);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.ADOLink);
-            this.groupBox1.Controls.Add(this.btnCopyDetails);
-            this.groupBox1.Controls.Add(this.txtBoxExtraValues);
-            this.groupBox1.Controls.Add(this.txtBoxPassword);
-            this.groupBox1.Controls.Add(this.txtBoxUsername);
-            this.groupBox1.Controls.Add(this.txtBoxPort);
-            this.groupBox1.Controls.Add(this.txtBoxHost);
+            this.groupBox1.Controls.Add(this.CopyDetails);
+            this.groupBox1.Controls.Add(this.Extravalue);
+            this.groupBox1.Controls.Add(this.Password);
+            this.groupBox1.Controls.Add(this.Username);
+            this.groupBox1.Controls.Add(this.Port);
+            this.groupBox1.Controls.Add(this.Host);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.lblChangesPending);
-            this.groupBox1.Controls.Add(this.txtBoxComments);
-            this.groupBox1.Controls.Add(this.btnSave);
+            this.groupBox1.Controls.Add(this.ChangesPending);
+            this.groupBox1.Controls.Add(this.Comments);
+            this.groupBox1.Controls.Add(this.Save);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.ddlEntryState);
+            this.groupBox1.Controls.Add(this.State);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
@@ -143,63 +144,79 @@
             this.ADOLink.Text = "{ADOLINK}";
             this.ADOLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.ADOLink_LinkClicked);
             // 
-            // btnCopyDetails
+            // CopyDetails
             // 
-            this.btnCopyDetails.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCopyDetails.Location = new System.Drawing.Point(6, 335);
-            this.btnCopyDetails.Name = "btnCopyDetails";
-            this.btnCopyDetails.Size = new System.Drawing.Size(165, 34);
-            this.btnCopyDetails.TabIndex = 14;
-            this.btnCopyDetails.Text = "Copy Details";
-            this.btnCopyDetails.UseVisualStyleBackColor = true;
-            this.btnCopyDetails.Click += new System.EventHandler(this.btnCopyDetails_Click);
+            this.CopyDetails.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CopyDetails.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CopyDetails.Location = new System.Drawing.Point(101, 312);
+            this.CopyDetails.Name = "CopyDetails";
+            this.CopyDetails.Size = new System.Drawing.Size(165, 34);
+            this.CopyDetails.TabIndex = 14;
+            this.CopyDetails.Text = "Copy Details";
+            this.CopyDetails.UseVisualStyleBackColor = true;
+            this.CopyDetails.Click += new System.EventHandler(this.CopyDetails_Click);
             // 
-            // txtBoxExtraValues
+            // Extravalue
             // 
-            this.txtBoxExtraValues.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBoxExtraValues.Location = new System.Drawing.Point(101, 183);
-            this.txtBoxExtraValues.Multiline = true;
-            this.txtBoxExtraValues.Name = "txtBoxExtraValues";
-            this.txtBoxExtraValues.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtBoxExtraValues.Size = new System.Drawing.Size(274, 123);
-            this.txtBoxExtraValues.TabIndex = 13;
-            this.txtBoxExtraValues.TextChanged += new System.EventHandler(this.txtBoxExtraValues_TextChanged);
+            this.Extravalue.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.Extravalue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Extravalue.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Extravalue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
+            this.Extravalue.Location = new System.Drawing.Point(101, 183);
+            this.Extravalue.Multiline = true;
+            this.Extravalue.Name = "Extravalue";
+            this.Extravalue.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.Extravalue.Size = new System.Drawing.Size(274, 123);
+            this.Extravalue.TabIndex = 13;
+            this.Extravalue.TextChanged += new System.EventHandler(this.ExtraValues_TextChanged);
             // 
-            // txtBoxPassword
+            // Password
             // 
-            this.txtBoxPassword.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBoxPassword.Location = new System.Drawing.Point(101, 141);
-            this.txtBoxPassword.Name = "txtBoxPassword";
-            this.txtBoxPassword.Size = new System.Drawing.Size(274, 23);
-            this.txtBoxPassword.TabIndex = 12;
-            this.txtBoxPassword.TextChanged += new System.EventHandler(this.txtBoxPassword_TextChanged);
+            this.Password.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.Password.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Password.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Password.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
+            this.Password.Location = new System.Drawing.Point(101, 141);
+            this.Password.Name = "Password";
+            this.Password.Size = new System.Drawing.Size(274, 23);
+            this.Password.TabIndex = 12;
+            this.Password.TextChanged += new System.EventHandler(this.Password_TextChanged);
             // 
-            // txtBoxUsername
+            // Username
             // 
-            this.txtBoxUsername.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBoxUsername.Location = new System.Drawing.Point(101, 108);
-            this.txtBoxUsername.Name = "txtBoxUsername";
-            this.txtBoxUsername.Size = new System.Drawing.Size(274, 23);
-            this.txtBoxUsername.TabIndex = 11;
-            this.txtBoxUsername.TextChanged += new System.EventHandler(this.txtBoxUsername_TextChanged);
+            this.Username.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.Username.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Username.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Username.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
+            this.Username.Location = new System.Drawing.Point(101, 108);
+            this.Username.Name = "Username";
+            this.Username.Size = new System.Drawing.Size(274, 23);
+            this.Username.TabIndex = 11;
+            this.Username.TextChanged += new System.EventHandler(this.Username_TextChanged);
             // 
-            // txtBoxPort
+            // Port
             // 
-            this.txtBoxPort.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBoxPort.Location = new System.Drawing.Point(101, 73);
-            this.txtBoxPort.Name = "txtBoxPort";
-            this.txtBoxPort.Size = new System.Drawing.Size(274, 23);
-            this.txtBoxPort.TabIndex = 10;
-            this.txtBoxPort.TextChanged += new System.EventHandler(this.txtBoxPort_TextChanged);
+            this.Port.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.Port.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Port.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Port.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
+            this.Port.Location = new System.Drawing.Point(101, 73);
+            this.Port.Name = "Port";
+            this.Port.Size = new System.Drawing.Size(274, 23);
+            this.Port.TabIndex = 10;
+            this.Port.TextChanged += new System.EventHandler(this.Port_TextChanged);
             // 
-            // txtBoxHost
+            // Host
             // 
-            this.txtBoxHost.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBoxHost.Location = new System.Drawing.Point(101, 36);
-            this.txtBoxHost.Name = "txtBoxHost";
-            this.txtBoxHost.Size = new System.Drawing.Size(274, 23);
-            this.txtBoxHost.TabIndex = 9;
-            this.txtBoxHost.TextChanged += new System.EventHandler(this.txtBoxHost_TextChanged);
+            this.Host.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.Host.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Host.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Host.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
+            this.Host.Location = new System.Drawing.Point(101, 36);
+            this.Host.Name = "Host";
+            this.Host.Size = new System.Drawing.Size(274, 23);
+            this.Host.TabIndex = 0;
+            this.Host.TextChanged += new System.EventHandler(this.Host_TextChanged);
             // 
             // label7
             // 
@@ -251,39 +268,43 @@
             this.label3.TabIndex = 4;
             this.label3.Text = "Host:";
             // 
-            // lblChangesPending
+            // ChangesPending
             // 
-            this.lblChangesPending.AutoSize = true;
-            this.lblChangesPending.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblChangesPending.ForeColor = System.Drawing.Color.Maroon;
-            this.lblChangesPending.Location = new System.Drawing.Point(421, 299);
-            this.lblChangesPending.Name = "lblChangesPending";
-            this.lblChangesPending.Size = new System.Drawing.Size(113, 16);
-            this.lblChangesPending.TabIndex = 2;
-            this.lblChangesPending.Text = "*Changes pending";
-            this.lblChangesPending.Visible = false;
+            this.ChangesPending.AutoSize = true;
+            this.ChangesPending.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ChangesPending.ForeColor = System.Drawing.Color.Maroon;
+            this.ChangesPending.Location = new System.Drawing.Point(412, 299);
+            this.ChangesPending.Name = "ChangesPending";
+            this.ChangesPending.Size = new System.Drawing.Size(113, 16);
+            this.ChangesPending.TabIndex = 2;
+            this.ChangesPending.Text = "*Changes pending";
+            this.ChangesPending.Visible = false;
             // 
-            // txtBoxComments
+            // Comments
             // 
-            this.txtBoxComments.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBoxComments.Location = new System.Drawing.Point(389, 144);
-            this.txtBoxComments.Multiline = true;
-            this.txtBoxComments.Name = "txtBoxComments";
-            this.txtBoxComments.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtBoxComments.Size = new System.Drawing.Size(383, 123);
-            this.txtBoxComments.TabIndex = 3;
-            this.txtBoxComments.TextChanged += new System.EventHandler(this.txtBoxComments_TextChanged);
+            this.Comments.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.Comments.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Comments.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Comments.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
+            this.Comments.Location = new System.Drawing.Point(389, 144);
+            this.Comments.Multiline = true;
+            this.Comments.Name = "Comments";
+            this.Comments.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.Comments.Size = new System.Drawing.Size(383, 123);
+            this.Comments.TabIndex = 3;
+            this.Comments.TextChanged += new System.EventHandler(this.Comments_TextChanged);
             // 
-            // btnSave
+            // Save
             // 
-            this.btnSave.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(415, 318);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(150, 51);
-            this.btnSave.TabIndex = 1;
-            this.btnSave.Text = "Save";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            this.Save.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Save.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Save.Location = new System.Drawing.Point(415, 318);
+            this.Save.Name = "Save";
+            this.Save.Size = new System.Drawing.Size(150, 51);
+            this.Save.TabIndex = 1;
+            this.Save.Text = "Save";
+            this.Save.UseVisualStyleBackColor = true;
+            this.Save.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // label2
             // 
@@ -295,16 +316,19 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Comments";
             // 
-            // ddlEntryState
+            // State
             // 
-            this.ddlEntryState.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ddlEntryState.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ddlEntryState.FormattingEnabled = true;
-            this.ddlEntryState.Location = new System.Drawing.Point(444, 95);
-            this.ddlEntryState.Name = "ddlEntryState";
-            this.ddlEntryState.Size = new System.Drawing.Size(121, 23);
-            this.ddlEntryState.TabIndex = 1;
-            this.ddlEntryState.SelectedIndexChanged += new System.EventHandler(this.ddlState_SelectedIndexChanged);
+            this.State.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.State.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.State.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.State.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.State.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
+            this.State.FormattingEnabled = true;
+            this.State.Location = new System.Drawing.Point(444, 95);
+            this.State.Name = "State";
+            this.State.Size = new System.Drawing.Size(121, 23);
+            this.State.TabIndex = 8;
+            this.State.SelectedIndexChanged += new System.EventHandler(this.State_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -320,13 +344,15 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.ClientSize = new System.Drawing.Size(892, 393);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "EditWindow";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -336,23 +362,23 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Button Save;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox ddlEntryState;
+        private System.Windows.Forms.ComboBox State;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtBoxComments;
-        private System.Windows.Forms.Label lblChangesPending;
-        private System.Windows.Forms.TextBox txtBoxHost;
+        private System.Windows.Forms.TextBox Comments;
+        private System.Windows.Forms.Label ChangesPending;
+        private System.Windows.Forms.TextBox Host;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtBoxPassword;
-        private System.Windows.Forms.TextBox txtBoxUsername;
-        private System.Windows.Forms.TextBox txtBoxPort;
-        private System.Windows.Forms.TextBox txtBoxExtraValues;
-        private System.Windows.Forms.Button btnCopyDetails;
+        private System.Windows.Forms.TextBox Password;
+        private System.Windows.Forms.TextBox Username;
+        private System.Windows.Forms.TextBox Port;
+        private System.Windows.Forms.TextBox Extravalue;
+        private System.Windows.Forms.Button CopyDetails;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.LinkLabel ADOLink;
         private System.Windows.Forms.Label label9;

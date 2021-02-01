@@ -8,6 +8,7 @@ namespace Organiser
     {
         public const string SavePath = @"D:\Development\Git Repo\WorkOrganiser\Database\";
         public const string DatabaseName = @"ProjectOrganiser.db";
+        public const string StandardDateTimeFormat = "dd/MM/yyyy";
         public static string DatabaseConnection = Path.Combine(SavePath, DatabaseName);
         public static string BackupLocation = Path.Combine(SavePath, "Backups", $"{DateTime.Now:dd-MM-yyyy}");
         public static string ErrorLogLocation = Path.Combine(SavePath, "ErrorLog.log"); 

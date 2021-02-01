@@ -5,6 +5,7 @@ using Organiser.Models.Enums;
 using Organiser.Extensions.Auto_Paste_Details_Plugin;
 using Organiser.Database;
 using System.Diagnostics;
+using System.Drawing;
 
 namespace Organiser
 {
@@ -27,36 +28,38 @@ namespace Organiser
             _localInstance = entry;
 
             groupBox1.Text = entry.Title;
-            ddlEntryState.DataSource = Enum.GetValues(typeof(ProjectState));
-            ddlEntryState.SelectedIndex = (int)entry.State;
-            txtBoxComments.Text = entry.Comments;
+            groupBox1.ForeColor = Color.White;
 
-            txtBoxHost.Text = entry.Details.Host;
-            txtBoxPort.Text = entry.Details.Port;
-            txtBoxUsername.Text = entry.Details.Username;
-            txtBoxPassword.Text = entry.Details.Password;
-            txtBoxExtraValues.Text = entry.Details.ExtraValue;
+            Host.Text = entry.Details.Host;
+            Port.Text = entry.Details.Port;
+            Username.Text = entry.Details.Username;
+            Password.Text = entry.Details.Password;
+            Extravalue.Text = entry.Details.ExtraValue;
+            Comments.Text = entry.Comments;
 
             ADOLink.Text = entry.URL;
             ADOLink.Links[0].LinkData = entry.URL;
 
             CreationDate.Text = entry.DateCreated.ToString();
 
-            btnSave.Enabled = false;
-            lblChangesPending.Visible = false;
+            State.DataSource = Enum.GetValues(typeof(ProjectState));
+            State.SelectedIndex = (int)entry.State;
+
+            Save.Enabled = false;
+            ChangesPending.Visible = false;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            _localInstance.Comments = txtBoxComments.Text;
-            _localInstance.State = (ProjectState)ddlEntryState.SelectedItem;
+            _localInstance.Comments = Comments.Text;
+            _localInstance.State = (ProjectState)State.SelectedItem;
             _localInstance.Details = new ConnectionDetails()
             {
-                Host = txtBoxHost.Text,
-                Port = txtBoxPort.Text,
-                Username = txtBoxUsername.Text,
-                Password = txtBoxPassword.Text,
-                ExtraValue = txtBoxExtraValues.Text
+                Host = Host.Text,
+                Port = Port.Text,
+                Username = Username.Text,
+                Password = Password.Text,
+                ExtraValue = Extravalue.Text
             };
 
             ChangesMade?.Invoke(this, _localInstance);
@@ -64,37 +67,37 @@ namespace Organiser
             this.Close();
         }
 
-        private void ddlState_SelectedIndexChanged(object sender, EventArgs e)
+        private void State_SelectedIndexChanged(object sender, EventArgs e)
         {
             ToggleChange();
         }
 
-        private void txtBoxComments_TextChanged(object sender, EventArgs e)
+        private void Comments_TextChanged(object sender, EventArgs e)
         {
             ToggleChange();
         }
 
-        private void txtBoxHost_TextChanged(object sender, EventArgs e)
+        private void Host_TextChanged(object sender, EventArgs e)
         {
             ToggleChange();
         }
 
-        private void txtBoxPort_TextChanged(object sender, EventArgs e)
+        private void Port_TextChanged(object sender, EventArgs e)
         {
             ToggleChange();
         }
 
-        private void txtBoxUsername_TextChanged(object sender, EventArgs e)
+        private void Username_TextChanged(object sender, EventArgs e)
         {
             ToggleChange();
         }
 
-        private void txtBoxPassword_TextChanged(object sender, EventArgs e)
+        private void Password_TextChanged(object sender, EventArgs e)
         {
             ToggleChange();
         }
 
-        private void txtBoxExtraValues_TextChanged(object sender, EventArgs e)
+        private void ExtraValues_TextChanged(object sender, EventArgs e)
         {
             ToggleChange();
         }
@@ -104,40 +107,40 @@ namespace Organiser
             var hasChanges = false;
             var extraValues = _localInstance.Details.ExtraValue == null ? string.Empty : _localInstance.Details.ExtraValue;
 
-            if(txtBoxHost.Text != _localInstance.Details.Host)
+            if(Host.Text != _localInstance.Details.Host)
             {
                 hasChanges = true;
             }
-            else if(txtBoxPort.Text != _localInstance.Details.Port)
+            else if(Port.Text != _localInstance.Details.Port)
             {
                 hasChanges = true;
             }
-            else if(txtBoxUsername.Text != _localInstance.Details.Username)
+            else if(Username.Text != _localInstance.Details.Username)
             {
                 hasChanges = true;
             }
-            else if(txtBoxPassword.Text != _localInstance.Details.Password)
+            else if(Password.Text != _localInstance.Details.Password)
             {
                 hasChanges = true;
             }
-            else if(txtBoxExtraValues.Text != extraValues)
+            else if(Extravalue.Text != extraValues)
             {
                 hasChanges = true;
             }
-            else if(txtBoxComments.Text != _localInstance.Comments)
+            else if(Comments.Text != _localInstance.Comments)
             {
                 hasChanges = true;
             }
-            else if(ddlEntryState.SelectedIndex != (int)_localInstance.State)
+            else if(State.SelectedIndex != (int)_localInstance.State)
             {
                 hasChanges = true;
             }
 
-            lblChangesPending.Visible = hasChanges;
-            btnSave.Enabled = hasChanges;
+            ChangesPending.Visible = hasChanges;
+            Save.Enabled = hasChanges;
         }
 
-        private void btnCopyDetails_Click(object sender, EventArgs e)
+        private void CopyDetails_Click(object sender, EventArgs e)
         {
             var data = SerialiseLogic.Instance.ConvertToJSON(_localInstance.Details);
             Clipboard.SetText(data);
