@@ -14,8 +14,10 @@ namespace Organiser
 {
     public partial class MainWindow : Form
     {
+        #region Fields
         private static BindingList<ProjectEntry> _entries = new BindingList<ProjectEntry>();
-        private bool _hasEditOpen;
+        private bool _isDetailsOpen;
+        #endregion
 
         public MainWindow()
         {
@@ -29,15 +31,12 @@ namespace Organiser
             }
 
             //Set data sources
-            listBoxOutput.DataSource = _entries
-                .OrderByDescending(x => x.State == ProjectState.Active)
-                .OrderByDescending(x => x.State == ProjectState.Validation)
-                .ToList();
+            ProjectList.DataSource = GetProjects();
 
             ddlState.DataSource = Enum.GetValues(typeof(ProjectState));
-            ddlFilter.DataSource = Enum.GetValues(typeof(ProjectState));
+            ProjectStateFilter.DataSource = Enum.GetValues(typeof(ProjectState));
             ddlState.SelectedIndex = 0;
-            ddlFilter.SelectedIndex = -1;
+            ProjectStateFilter.SelectedIndex = -1;
             HideCompleted.Checked = true;
 
             //Backup database
@@ -51,21 +50,10 @@ namespace Organiser
         #region Control Events
         private void HideCompleted_CheckedChanged(object sender, EventArgs e)
         {
-            if (HideCompleted.Checked)
-            {
-                listBoxOutput.DataSource = _entries
-                    .Where(x => x.State != ProjectState.Complete)
-                    .OrderByDescending(x => x.State == ProjectState.Active)
-                    .OrderByDescending(x => x.State == ProjectState.Validation)
-                    .ToList();
-            }
-            else
-            {
-                RefreshOutput();
-            }
+            RefreshOutput();
         }
 
-        private void btn_InsertRecord_Click(object sender, EventArgs e)
+        private void InsertRecord_Click(object sender, EventArgs e)
         {
             try
             {
@@ -117,14 +105,14 @@ namespace Organiser
             }
         }
 
-        private void listBoxOutput_DoubleClick(object sender, EventArgs e)
+        private void ProjectList_DoubleClick(object sender, EventArgs e)
         {
             try
             {
-                var selected = listBoxOutput.SelectedItem as ProjectEntry;
+                var selected = ProjectList.SelectedItem as ProjectEntry;
                 if (selected != null)
                 {
-                    if (!_hasEditOpen)
+                    if (!_isDetailsOpen)
                     {
                         //Open quick edit window
                         EditWindow edit = new EditWindow(selected);
@@ -134,7 +122,7 @@ namespace Organiser
                         edit.ChangesMade += EntryChangesCallback;
                         edit.RecordDeleted += RecordDeletedCallback;
                         edit.Show();
-                        _hasEditOpen = true;
+                        _isDetailsOpen = true;
                     }
                 }
             }
@@ -144,35 +132,7 @@ namespace Organiser
             }
         }
 
-        private void Edit_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            _hasEditOpen = false;
-        }
-
-        private void ddlFilter_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                if (ddlFilter.SelectedIndex != -1)
-                {
-                    var selected = (ProjectState)ddlFilter.SelectedItem;
-                    if(selected == ProjectState.None)
-                    {
-                        RefreshOutput();
-                    }
-                    else
-                    {
-                        listBoxOutput.DataSource = _entries.Where(x => x.State == selected).ToList();
-                    }
-                }
-            }
-            catch(Exception ex)
-            {
-                ErrorHandler.ThrowError(ex);
-            }
-        }
-
-        private void listBoxOutput_DrawItem(object sender, DrawItemEventArgs e)
+        private void ProjectList_DrawItem(object sender, DrawItemEventArgs e)
         {
             e.DrawBackground();
 
@@ -200,14 +160,42 @@ namespace Organiser
             e.Graphics.DrawString(item.ToString(), e.Font, itemColor, e.Bounds, StringFormat.GenericDefault);
 
             e.DrawFocusRectangle();
-            listBoxOutput.SelectedIndex = -1;
+            ProjectList.SelectedIndex = -1;
         }
 
-        private void txtBoxSearch_KeyDown(object sender, KeyEventArgs e)
+        private void Edit_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if (!string.IsNullOrEmpty(txtBoxSearch.Text))
+            _isDetailsOpen = false;
+        }
+
+        private void ProjectStateFilter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
             {
-                SearchEntry(txtBoxSearch.Text.ToLower().Trim());
+                if (ProjectStateFilter.SelectedIndex != -1)
+                {
+                    var selected = (ProjectState)ProjectStateFilter.SelectedItem;
+                    if(selected == ProjectState.None)
+                    {
+                        RefreshOutput();
+                    }
+                    else
+                    {
+                        ProjectList.DataSource = _entries.Where(x => x.State == selected).ToList();
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+                ErrorHandler.ThrowError(ex);
+            }
+        }
+
+        private void ProjectSearch_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(ProjectSearch.Text))
+            {
+                SearchEntry(ProjectSearch.Text.ToLower().Trim());
             }
             else
             {
@@ -215,18 +203,57 @@ namespace Organiser
             }
         }
 
-        private void txtBoxSearch_TextChanged(object sender, EventArgs e)
+        private void ProjectSearch_TextChanged(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtBoxSearch.Text))
+            if (string.IsNullOrEmpty(ProjectSearch.Text))
             {
                 RefreshOutput();
             }
         }
         #endregion
 
+        private void RecordDeletedCallback(object sender, ProjectEntry entry)
+        {
+            try
+            {
+                if (entry != null)
+                {
+                    var result = _entries.Remove(entry);
+                    if (result)
+                    {
+                        MessageBox.Show($"Deleted entry [{entry.Title}]", "Deleted Record", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }
+
+                    //Refresh
+                    RefreshOutput();
+                }
+            }
+            catch (Exception ex)
+            {
+                ErrorHandler.ThrowError(ex);
+            }
+        }
+
+        private void EntryChangesCallback(object sender, ProjectEntry e)
+        {
+            try
+            {
+                //Update record
+                DataAccess.Instance.UpdateRecord(e);
+
+                //Refresh output
+                RefreshOutput();
+            }
+            catch (Exception ex)
+            {
+                ErrorHandler.ThrowError(ex);
+            }
+        }
+
+        #region Private Methods
         private List<ProjectEntry> GetProjects()
         {
-            if(HideCompleted.Checked)
+            if (HideCompleted.Checked)
             {
                 return _entries
                     .Where(x => x.State != ProjectState.Complete)
@@ -240,7 +267,7 @@ namespace Organiser
                     .OrderByDescending(x => x.State == ProjectState.Active)
                     .OrderByDescending(x => x.State == ProjectState.Validation)
                     .ToList();
-            }                   
+            }
         }
 
         /// <summary>
@@ -261,13 +288,13 @@ namespace Organiser
                 return false;
             }
 
-            if (ddlState.SelectedIndex <= -1)
+            if (ddlState.SelectedIndex == 0)
             {
                 DisplayDialog("Select a state.");
                 return false;
             }
 
-            if(!string.IsNullOrEmpty(txtBoxHostPort.Text))
+            if (!string.IsNullOrEmpty(txtBoxHostPort.Text))
             {
                 if (!txtBoxHostPort.Text.Contains(':'))
                 {
@@ -287,18 +314,18 @@ namespace Organiser
             try
             {
                 //Clear filter
-                ddlFilter.SelectedIndex = -1;
-                txtBoxSearch.Text = string.Empty;
+                ProjectStateFilter.SelectedIndex = -1;
+                ProjectSearch.Text = string.Empty;
 
                 //Clear output
-                listBoxOutput.DataSource = null;
-                listBoxOutput.Items.Clear();
+                ProjectList.DataSource = null;
+                ProjectList.Items.Clear();
 
                 //Then sort & reassign values
-                listBoxOutput.DataSource = GetProjects();
-                listBoxOutput.Refresh();
+                ProjectList.DataSource = GetProjects();
+                ProjectList.Refresh();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 ErrorHandler.ThrowError(ex);
             }
@@ -311,14 +338,14 @@ namespace Organiser
         private void SearchEntry(string filter)
         {
             //Clear filter
-            ddlFilter.SelectedIndex = -1;
+            ProjectStateFilter.SelectedIndex = -1;
 
             //Clear output
-            listBoxOutput.DataSource = null;
-            listBoxOutput.Items.Clear();
+            ProjectList.DataSource = null;
+            ProjectList.Items.Clear();
 
             //Then sort & reassign values
-            listBoxOutput.DataSource = _entries
+            ProjectList.DataSource = _entries
                 .Where(x => x.Title.ToLower().Contains(filter))
                 .ToList();
         }
@@ -331,7 +358,7 @@ namespace Organiser
             txtBoxTitle.Text = string.Empty;
             txtBoxLink.Text = string.Empty;
             txtBoxComments.Text = string.Empty;
-            txtBoxSearch.Text = string.Empty;
+            ProjectSearch.Text = string.Empty;
             txtBoxHostPort.Text = string.Empty;
             txtBoxUsername.Text = string.Empty;
             txtBoxPassword.Text = string.Empty;
@@ -357,43 +384,6 @@ namespace Organiser
                 ErrorHandler.ThrowError(ex);
             }
         }
-
-        private void RecordDeletedCallback(object sender, ProjectEntry entry)
-        {
-            try
-            {
-                if (entry != null)
-                {
-                    var result = _entries.Remove(entry);
-                    if (result)
-                    {
-                        MessageBox.Show($"Deleted entry [{entry.Title}]", "Deleted Record", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    }
-
-                    //Refresh
-                    RefreshOutput();
-                }
-            }
-            catch(Exception ex)
-            {
-                ErrorHandler.ThrowError(ex);
-            }
-        }
-
-        private void EntryChangesCallback(object sender, ProjectEntry e)
-        {
-            try
-            {
-                //Update record
-                DataAccess.Instance.UpdateRecord(e);
-
-                //Refresh output
-                RefreshOutput();
-            }
-            catch(Exception ex)
-            {
-                ErrorHandler.ThrowError(ex);
-            }
-        }
+        #endregion
     }
 }

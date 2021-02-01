@@ -40,7 +40,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.ddlState = new System.Windows.Forms.ComboBox();
-            this.btn_InsertRecord = new System.Windows.Forms.Button();
+            this.InsertRecord = new System.Windows.Forms.Button();
             this.txtBoxComments = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtBoxLink = new System.Windows.Forms.TextBox();
@@ -48,11 +48,11 @@
             this.txtBoxTitle = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.listBoxOutput = new System.Windows.Forms.ListBox();
-            this.ddlFilter = new System.Windows.Forms.ComboBox();
+            this.ProjectList = new System.Windows.Forms.ListBox();
+            this.ProjectStateFilter = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.txtBoxSearch = new System.Windows.Forms.TextBox();
+            this.ProjectSearch = new System.Windows.Forms.TextBox();
             this.HideCompleted = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -69,7 +69,7 @@
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.ddlState);
-            this.groupBox1.Controls.Add(this.btn_InsertRecord);
+            this.groupBox1.Controls.Add(this.InsertRecord);
             this.groupBox1.Controls.Add(this.txtBoxComments);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.txtBoxLink);
@@ -85,12 +85,14 @@
             this.groupBox1.Size = new System.Drawing.Size(414, 648);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Details";
             // 
             // txtBoxExtraValue
             // 
+            this.txtBoxExtraValue.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.txtBoxExtraValue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtBoxExtraValue.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBoxExtraValue.Location = new System.Drawing.Point(7, 565);
+            this.txtBoxExtraValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
+            this.txtBoxExtraValue.Location = new System.Drawing.Point(8, 523);
             this.txtBoxExtraValue.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtBoxExtraValue.Name = "txtBoxExtraValue";
             this.txtBoxExtraValue.Size = new System.Drawing.Size(399, 21);
@@ -100,7 +102,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(3, 542);
+            this.label11.Location = new System.Drawing.Point(4, 500);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(78, 16);
             this.label11.TabIndex = 16;
@@ -108,8 +110,11 @@
             // 
             // txtBoxPassword
             // 
+            this.txtBoxPassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.txtBoxPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtBoxPassword.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBoxPassword.Location = new System.Drawing.Point(6, 515);
+            this.txtBoxPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
+            this.txtBoxPassword.Location = new System.Drawing.Point(7, 473);
             this.txtBoxPassword.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtBoxPassword.Name = "txtBoxPassword";
             this.txtBoxPassword.Size = new System.Drawing.Size(399, 21);
@@ -119,7 +124,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(2, 492);
+            this.label10.Location = new System.Drawing.Point(3, 450);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(65, 16);
             this.label10.TabIndex = 14;
@@ -127,8 +132,11 @@
             // 
             // txtBoxUsername
             // 
+            this.txtBoxUsername.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.txtBoxUsername.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtBoxUsername.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBoxUsername.Location = new System.Drawing.Point(6, 461);
+            this.txtBoxUsername.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
+            this.txtBoxUsername.Location = new System.Drawing.Point(7, 419);
             this.txtBoxUsername.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtBoxUsername.Name = "txtBoxUsername";
             this.txtBoxUsername.Size = new System.Drawing.Size(399, 21);
@@ -138,7 +146,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(2, 438);
+            this.label9.Location = new System.Drawing.Point(3, 396);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(67, 16);
             this.label9.TabIndex = 12;
@@ -146,8 +154,11 @@
             // 
             // txtBoxHostPort
             // 
+            this.txtBoxHostPort.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.txtBoxHostPort.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtBoxHostPort.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBoxHostPort.Location = new System.Drawing.Point(6, 407);
+            this.txtBoxHostPort.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
+            this.txtBoxHostPort.Location = new System.Drawing.Point(7, 365);
             this.txtBoxHostPort.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtBoxHostPort.Name = "txtBoxHostPort";
             this.txtBoxHostPort.Size = new System.Drawing.Size(399, 21);
@@ -157,7 +168,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(2, 384);
+            this.label8.Location = new System.Drawing.Point(3, 342);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(88, 16);
             this.label8.TabIndex = 10;
@@ -167,7 +178,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(3, 311);
+            this.label5.Location = new System.Drawing.Point(7, 118);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(39, 16);
             this.label5.TabIndex = 9;
@@ -175,30 +186,36 @@
             // 
             // ddlState
             // 
+            this.ddlState.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.ddlState.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ddlState.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.ddlState.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ddlState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
             this.ddlState.FormattingEnabled = true;
-            this.ddlState.Location = new System.Drawing.Point(6, 333);
+            this.ddlState.Location = new System.Drawing.Point(8, 137);
             this.ddlState.Name = "ddlState";
             this.ddlState.Size = new System.Drawing.Size(121, 24);
             this.ddlState.TabIndex = 8;
             // 
-            // btn_InsertRecord
+            // InsertRecord
             // 
-            this.btn_InsertRecord.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_InsertRecord.Location = new System.Drawing.Point(6, 598);
-            this.btn_InsertRecord.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btn_InsertRecord.Name = "btn_InsertRecord";
-            this.btn_InsertRecord.Size = new System.Drawing.Size(397, 42);
-            this.btn_InsertRecord.TabIndex = 7;
-            this.btn_InsertRecord.Text = "Insert Record";
-            this.btn_InsertRecord.UseVisualStyleBackColor = true;
-            this.btn_InsertRecord.Click += new System.EventHandler(this.btn_InsertRecord_Click);
+            this.InsertRecord.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.InsertRecord.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.InsertRecord.Location = new System.Drawing.Point(6, 598);
+            this.InsertRecord.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.InsertRecord.Name = "InsertRecord";
+            this.InsertRecord.Size = new System.Drawing.Size(397, 42);
+            this.InsertRecord.TabIndex = 7;
+            this.InsertRecord.Text = "Insert Record";
+            this.InsertRecord.UseVisualStyleBackColor = true;
+            this.InsertRecord.Click += new System.EventHandler(this.InsertRecord_Click);
             // 
             // txtBoxComments
             // 
+            this.txtBoxComments.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.txtBoxComments.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBoxComments.Location = new System.Drawing.Point(7, 191);
+            this.txtBoxComments.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
+            this.txtBoxComments.Location = new System.Drawing.Point(6, 202);
             this.txtBoxComments.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtBoxComments.Multiline = true;
             this.txtBoxComments.Name = "txtBoxComments";
@@ -210,7 +227,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(3, 168);
+            this.label4.Location = new System.Drawing.Point(2, 179);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(71, 16);
             this.label4.TabIndex = 5;
@@ -218,8 +235,11 @@
             // 
             // txtBoxLink
             // 
+            this.txtBoxLink.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.txtBoxLink.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtBoxLink.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBoxLink.Location = new System.Drawing.Point(7, 124);
+            this.txtBoxLink.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
+            this.txtBoxLink.Location = new System.Drawing.Point(10, 93);
             this.txtBoxLink.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtBoxLink.Name = "txtBoxLink";
             this.txtBoxLink.Size = new System.Drawing.Size(399, 21);
@@ -229,7 +249,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(2, 101);
+            this.label3.Location = new System.Drawing.Point(5, 70);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(116, 16);
             this.label3.TabIndex = 3;
@@ -237,8 +257,11 @@
             // 
             // txtBoxTitle
             // 
+            this.txtBoxTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.txtBoxTitle.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtBoxTitle.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBoxTitle.Location = new System.Drawing.Point(7, 60);
+            this.txtBoxTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
+            this.txtBoxTitle.Location = new System.Drawing.Point(10, 38);
             this.txtBoxTitle.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtBoxTitle.Name = "txtBoxTitle";
             this.txtBoxTitle.Size = new System.Drawing.Size(399, 21);
@@ -248,7 +271,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(2, 37);
+            this.label1.Location = new System.Drawing.Point(5, 15);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(32, 16);
             this.label1.TabIndex = 1;
@@ -262,32 +285,35 @@
             this.label2.Size = new System.Drawing.Size(0, 18);
             this.label2.TabIndex = 0;
             // 
-            // listBoxOutput
+            // ProjectList
             // 
-            this.listBoxOutput.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.listBoxOutput.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.listBoxOutput.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listBoxOutput.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
-            this.listBoxOutput.FormattingEnabled = true;
-            this.listBoxOutput.ItemHeight = 18;
-            this.listBoxOutput.Location = new System.Drawing.Point(435, 33);
-            this.listBoxOutput.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.listBoxOutput.Name = "listBoxOutput";
-            this.listBoxOutput.Size = new System.Drawing.Size(670, 580);
-            this.listBoxOutput.TabIndex = 1;
-            this.listBoxOutput.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBoxOutput_DrawItem);
-            this.listBoxOutput.DoubleClick += new System.EventHandler(this.listBoxOutput_DoubleClick);
+            this.ProjectList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.ProjectList.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.ProjectList.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ProjectList.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
+            this.ProjectList.FormattingEnabled = true;
+            this.ProjectList.ItemHeight = 18;
+            this.ProjectList.Location = new System.Drawing.Point(435, 33);
+            this.ProjectList.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ProjectList.Name = "ProjectList";
+            this.ProjectList.Size = new System.Drawing.Size(670, 580);
+            this.ProjectList.TabIndex = 1;
+            this.ProjectList.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.ProjectList_DrawItem);
+            this.ProjectList.DoubleClick += new System.EventHandler(this.ProjectList_DoubleClick);
             // 
-            // ddlFilter
+            // ProjectStateFilter
             // 
-            this.ddlFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ddlFilter.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ddlFilter.FormattingEnabled = true;
-            this.ddlFilter.Location = new System.Drawing.Point(506, 622);
-            this.ddlFilter.Name = "ddlFilter";
-            this.ddlFilter.Size = new System.Drawing.Size(121, 24);
-            this.ddlFilter.TabIndex = 10;
-            this.ddlFilter.SelectedIndexChanged += new System.EventHandler(this.ddlFilter_SelectedIndexChanged);
+            this.ProjectStateFilter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.ProjectStateFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ProjectStateFilter.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.ProjectStateFilter.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ProjectStateFilter.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
+            this.ProjectStateFilter.FormattingEnabled = true;
+            this.ProjectStateFilter.Location = new System.Drawing.Point(506, 622);
+            this.ProjectStateFilter.Name = "ProjectStateFilter";
+            this.ProjectStateFilter.Size = new System.Drawing.Size(121, 24);
+            this.ProjectStateFilter.TabIndex = 10;
+            this.ProjectStateFilter.SelectedIndexChanged += new System.EventHandler(this.ProjectStateFilter_SelectedIndexChanged);
             // 
             // label6
             // 
@@ -302,23 +328,26 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold);
             this.label7.Location = new System.Drawing.Point(432, 9);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(62, 18);
             this.label7.TabIndex = 10;
             this.label7.Text = "Search:";
             // 
-            // txtBoxSearch
+            // ProjectSearch
             // 
-            this.txtBoxSearch.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBoxSearch.Location = new System.Drawing.Point(494, 8);
-            this.txtBoxSearch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtBoxSearch.Name = "txtBoxSearch";
-            this.txtBoxSearch.Size = new System.Drawing.Size(611, 21);
-            this.txtBoxSearch.TabIndex = 10;
-            this.txtBoxSearch.TextChanged += new System.EventHandler(this.txtBoxSearch_TextChanged);
-            this.txtBoxSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBoxSearch_KeyDown);
+            this.ProjectSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.ProjectSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ProjectSearch.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ProjectSearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
+            this.ProjectSearch.Location = new System.Drawing.Point(494, 8);
+            this.ProjectSearch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ProjectSearch.Name = "ProjectSearch";
+            this.ProjectSearch.Size = new System.Drawing.Size(611, 21);
+            this.ProjectSearch.TabIndex = 10;
+            this.ProjectSearch.TextChanged += new System.EventHandler(this.ProjectSearch_TextChanged);
+            this.ProjectSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ProjectSearch_KeyDown);
             // 
             // HideCompleted
             // 
@@ -334,15 +363,17 @@
             // MainWindow
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
             this.ClientSize = new System.Drawing.Size(1113, 676);
             this.Controls.Add(this.HideCompleted);
-            this.Controls.Add(this.txtBoxSearch);
+            this.Controls.Add(this.ProjectSearch);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.listBoxOutput);
-            this.Controls.Add(this.ddlFilter);
+            this.Controls.Add(this.ProjectList);
+            this.Controls.Add(this.ProjectStateFilter);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -367,14 +398,14 @@
         private System.Windows.Forms.TextBox txtBoxComments;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtBoxLink;
-        private System.Windows.Forms.Button btn_InsertRecord;
-        private System.Windows.Forms.ListBox listBoxOutput;
+        private System.Windows.Forms.Button InsertRecord;
+        private System.Windows.Forms.ListBox ProjectList;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox ddlState;
-        private System.Windows.Forms.ComboBox ddlFilter;
+        private System.Windows.Forms.ComboBox ProjectStateFilter;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox txtBoxSearch;
+        private System.Windows.Forms.TextBox ProjectSearch;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtBoxHostPort;
         private System.Windows.Forms.TextBox txtBoxUsername;
