@@ -31,9 +31,9 @@ namespace Organiser
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Notes));
             this.label1 = new System.Windows.Forms.Label();
-            this.HistoryNotes = new System.Windows.Forms.TextBox();
             this.TodayLabel = new System.Windows.Forms.Label();
             this.TodayNotes = new System.Windows.Forms.TextBox();
+            this.Richie = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -45,20 +45,6 @@ namespace Organiser
             this.label1.Size = new System.Drawing.Size(81, 25);
             this.label1.TabIndex = 0;
             this.label1.Text = "History";
-            // 
-            // HistoryNotes
-            // 
-            this.HistoryNotes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.HistoryNotes.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.HistoryNotes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
-            this.HistoryNotes.Location = new System.Drawing.Point(16, 37);
-            this.HistoryNotes.MaxLength = 9999999;
-            this.HistoryNotes.Multiline = true;
-            this.HistoryNotes.Name = "HistoryNotes";
-            this.HistoryNotes.ReadOnly = true;
-            this.HistoryNotes.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.HistoryNotes.Size = new System.Drawing.Size(785, 585);
-            this.HistoryNotes.TabIndex = 1;
             // 
             // TodayLabel
             // 
@@ -74,6 +60,7 @@ namespace Organiser
             // 
             this.TodayNotes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
             this.TodayNotes.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TodayNotes.Font = new System.Drawing.Font("Arial", 12.75F);
             this.TodayNotes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
             this.TodayNotes.Location = new System.Drawing.Point(17, 662);
             this.TodayNotes.MaxLength = 9999999;
@@ -81,7 +68,21 @@ namespace Organiser
             this.TodayNotes.Name = "TodayNotes";
             this.TodayNotes.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.TodayNotes.Size = new System.Drawing.Size(785, 265);
-            this.TodayNotes.TabIndex = 3;
+            this.TodayNotes.TabIndex = 1;
+            this.TodayNotes.TabStop = false;
+            // 
+            // Richie
+            // 
+            this.Richie.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
+            this.Richie.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Richie.Font = new System.Drawing.Font("Arial", 12.75F);
+            this.Richie.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
+            this.Richie.Location = new System.Drawing.Point(17, 37);
+            this.Richie.Name = "Richie";
+            this.Richie.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
+            this.Richie.Size = new System.Drawing.Size(784, 594);
+            this.Richie.TabIndex = 8;
+            this.Richie.Text = "";
             // 
             // Notes
             // 
@@ -89,9 +90,9 @@ namespace Organiser
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.ClientSize = new System.Drawing.Size(813, 939);
+            this.Controls.Add(this.Richie);
             this.Controls.Add(this.TodayNotes);
             this.Controls.Add(this.TodayLabel);
-            this.Controls.Add(this.HistoryNotes);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Arial", 9.75F);
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
@@ -110,8 +111,8 @@ namespace Organiser
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox HistoryNotes;
         private System.Windows.Forms.Label TodayLabel;
         private System.Windows.Forms.TextBox TodayNotes;
+        private System.Windows.Forms.RichTextBox Richie;
     }
 }

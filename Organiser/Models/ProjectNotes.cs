@@ -10,7 +10,7 @@ namespace Organiser.Models
 
         public override string ToString()
         {
-            return $"\n\n{Id}. {Created}\n==================\n\n{Content}\n\n";
+            return $"({Created.ToString(Constants.StandardDateTimeFormat)}): {Content}";
         }
     }
 }

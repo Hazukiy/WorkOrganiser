@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Drawing;
 using System.Windows.Forms;
 using Organiser.Database;
 using Organiser.Models;
@@ -20,7 +21,9 @@ namespace Organiser
             var historyNotes = DataAccess.Instance.GetHistoryNotes();
             foreach (var item in historyNotes)
             {
-                HistoryNotes.Text = item.ToString();
+                // NOTE: This is messy, maybe a nicer way of doing this?
+                Richie.Rtf = @"{\rtf1\pc \b " + item.Created.ToString(Constants.StandardDateTimeFormat) + @":\b0 " + " ";
+                Richie.AppendText($"\r\n{item.Content}\r\n");
             }
 
             // Load in todays notes (if any)
